@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidQuiz</string>
+    <string name="question">Pregunta</string>
+    <string name="check">COMPROBAR</string>
+    <string name="correct">Muy bien</string>
+    <string name="question_content">Es verdad?</string>
+    <string name="incorrect">Incorrecto</string>
+</resources>
