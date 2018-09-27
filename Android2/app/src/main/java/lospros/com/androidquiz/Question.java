@@ -4,7 +4,6 @@ public class Question {
     private String question = null;
     private String image =  null;
     private int cA;
-
     private boolean iA;//text (false) or images (true) on Answers
     private  String [] ans = new String[4];//Text or name of images.
 

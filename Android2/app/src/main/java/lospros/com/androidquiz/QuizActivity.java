@@ -12,11 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -31,73 +35,60 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
-
-        ///Creating JSON.
-        Gson gson = new Gson();
         ArrayList<Question> qs = new ArrayList<>();
-        qs.add( new Question("Pregunta 1","pepa",0,false, new String[]{"false", "patata","potato", "oreja"}));
-        qs.add( new Question("Pregunta 2","",1,false, new String[]{"false", "patata","potato", "oreja"}));
-        qs.add( new Question("Pregunta 3","artefinal",1,false, new String[]{"false", "patata","potato", "oreja"}));
-
-
-
-
-/*
+        ///Reading JSON.
+        InputStream is = getResources().openRawResource(R.raw.questions);
+        String dataFile = "";
         try {
-            Log.i("msgJSON","Escribiendo...");
-            gson.toJson(qs,new FileWriter(getFilesDir()+ File.separator+"enres.json"));
+            int size = is.available();
+            byte [] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            dataFile =  new String(buffer);
         } catch (IOException e) {
-            Log.v("errorJSON","No se ha escrito na");
             e.printStackTrace();
         }
 
-*/
+        ArrayList<Question> questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
+
+
+
+
+
 
         ///
-        TextView text_question = (TextView) findViewById(R.id.text_question);
-        text_question.setText(R.string.question_content);
-        //final ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-        final ImageView questionImg = new ImageView(this);
-        questionImg.setImageResource(R.drawable.pepa);
 
-        /*ConstraintSet set = new ConstraintSet();
-        set.connect(questionImg.getId(), ConstraintSet.TOP, 60);
-        */
-        String[] answers = getResources().getStringArray(R.array.answers);
+        Button[] buttons = { (Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
+        TextView text_question = (TextView) findViewById(R.id.text_question);
+        text_question.setText(questionList.get(0).getQuestion());
+        final ImageView questionImg = (ImageView) findViewById(R.id.question_image);
+        questionImg.setImageResource(getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName()));
+
+        String[] answers = questionList.get(0).getAns();
+
+        final int cA = questionList.get(0).getcA();
 
         for (int i = 0; i < ids_answers.length; i++) {
-            RadioButton rb = (RadioButton) findViewById(ids_answers[i]);
-            rb.setText(answers[i]);
-        }
-
-        final RadioGroup group = (RadioGroup) findViewById(R.id.answer_group);
-        final int cA = getResources().getInteger(R.integer.cA);
-
-        Button btn_check = (Button) findViewById(R.id.btn_check);
-        btn_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int id = group.getCheckedRadioButtonId();
-                int answer = -1;
-                for (int i = 0; i < ids_answers.length; i++) {
-                    if (ids_answers[i] == id) {
-                        answer = i;
+            Button btn = buttons[i];
+            btn.setText(answers[i]);
+            final int aux = i;
+            btn.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (aux == cA) {
+                        Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+                        //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
+                        questionImg.setVisibility(View.GONE);
+                        questionImg.setVisibility(View.VISIBLE);
+                        questionImg.setImageResource(R.drawable.pepa);
+                    } else {//Incorrecta
+                        Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                        //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
+                        questionImg.setVisibility(View.VISIBLE);
+                        questionImg.setImageResource(R.drawable.artefinal);
                     }
                 }
-                if (answer ==  cA) {
-                    Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
-                    //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-                    questionImg.setVisibility(View.GONE);
-                } else {//Incorrecta
-                    Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
-                    //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-                    questionImg.setVisibility(View.VISIBLE);
-                    questionImg.setImageResource(R.drawable.artefinal);
-                }
-            }
-        });
-
-
-
+            }));
+        }
     }
 }

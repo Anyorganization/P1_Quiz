@@ -1,0 +1,7 @@
+[
+{ "question" : "¿Cuál es una fruta?", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "Naranja", "Lechuga", "Zanahoria", "Arroz" ] },
+{ "question" : "¿Quién es este personaje?", "image" : "pepa", "cA" : 2, "iA" : false, "ans" : [ "Paco Pico", "Mariano Rajoy", "Peppa Pig", "Fernando Alonso" ] },,
+{ "question" : "¿Qué hace el hombre?", "image" : "artefinal", "cA" : 1, "iA" : false, "ans" : [ "Estornudar", "Toser", "Cantar", "Pensar en Andrés" ] },,
+{ "question" : "¿Cuál es Pepa?", "image" : "", "cA" : 3, "iA" : true, "ans" : [ "artefinal", "artefinal", "artefinal", "pepa" ] },,
+{ "question" : "¿Quién cantaba Bulería?", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "David Bisbal", "Galletero", "David Bustamante", "Eminem" ] },
+]
