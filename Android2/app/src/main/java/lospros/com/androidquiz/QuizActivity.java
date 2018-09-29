@@ -1,5 +1,6 @@
 package lospros.com.androidquiz;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,19 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+/*
+
+
+public void confirmFireMissiles() {
+    DialogFragment newFragment = new FireMissilesDialogFragment();
+    newFragment.show(getSupportFragmentManager(), "missiles");
+
+
+
+}
+
+ */
 public class QuizActivity extends AppCompatActivity {
 
 
@@ -30,7 +44,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView text_question;
     ImageView questionImg;
     ArrayList<Question> questionList;
+    int currentQuestion =0;
     int cA;
+
+
 
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4
@@ -85,28 +102,14 @@ public class QuizActivity extends AppCompatActivity {
             buttons[i].setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (aux == cA) {
-                        Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
-                        //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-                        questionImg.setVisibility(View.GONE);
-                        questionImg.setVisibility(View.VISIBLE);
-                        questionImg.setImageResource(R.drawable.pepa);
-                        initQuestion(questionList.get(1));
-
-                    } else {//Incorrecta
-                        Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
-                        //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-                        questionImg.setVisibility(View.VISIBLE);
-                        questionImg.setImageResource(R.drawable.artefinal);
-                    }
+                    checkQuestion(aux);
                 }
             }));
         }
-        initQuestion(questionList.get(0));
+        initQuestion(questionList.get(currentQuestion));
     }
 
     private void initQuestion(Question q){
-//getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName())
         //Question
         text_question.setText(getResources().getIdentifier(q.getQuestion(), "string", getPackageName()));
 
@@ -133,6 +136,21 @@ public class QuizActivity extends AppCompatActivity {
                 buttons[i].setText(getResources().getIdentifier(q.getAns()[i],"string", getPackageName()));
             }
 
+        }
+    }
+
+
+    private void checkQuestion(int aux){
+        if (aux == cA) {
+            Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+            currentQuestion++;
+            initQuestion(questionList.get(currentQuestion));
+
+        } else {//Incorrecta
+            Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+            //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
+            DialogFragment fragmentDialog = new IncorrectAnswerDialog();
+            fragmentDialog.show(getSupportFragmentManager(), "incorrentanswerdialog");
         }
     }
 }
