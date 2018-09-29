@@ -1,7 +1,15 @@
 [
-{ "question" : "¿Cuál es una fruta?", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "Tomate", "Lechuga", "Zanahoria", "Arroz" ] },
-{ "question" : "¿Qui�n es este personaje?", "image" : "pepa", "cA" : 2, "iA" : false, "ans" : [ "Paco Pico", "Mariano Rajoy", "Peppa Pig", "Fernando Alonso" ] },
-{ "question" : "¿Qu� hace el hombre?", "image" : "artefinal", "cA" : 1, "iA" : false, "ans" : [ "Estornudar", "Toser", "Cantar", "Pensar en Andr�s" ] },
-{ "question" : "¿Cu�l es Pepa?", "image" : "", "cA" : 3, "iA" : true, "ans" : [ "artefinal", "artefinal", "artefinal", "pepa" ] },
-{ "question" : "¿Qui�n cantaba Buler�a?", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "David Bisbal", "Galletero", "David Bustamante", "Eminem" ] }
+
+{ "question" : "q000", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans000_1", "ans000_2", "ans000_3", "ans000_4" ] },
+{ "question" : "q001", "image" : "pepa", "cA" : 2, "iA" : false, "ans" : [ "ans001_1", "ans001_2", "ans001_3", "ans001_4" ] },
+{ "question" : "q002", "image" : "artefinal", "cA" : 1, "iA" : false, "ans" : [ "ans002_1", "ans002_2", "ans002_3", "ans002_4" ] },
+{ "question" : "q003", "image" : "", "cA" : 3, "iA" : true, "ans" : [ "ans003_1", "ans003_2", "ans003_3", "ans003_4" ] },
+{ "question" : "q004", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans004_1", "ans004_2", "ans004_3", "ans004_4" ] },
+
+{ "question" : "q005", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans005_1", "ans005_2", "ans005_3", "ans005_4" ] },
+{ "question" : "q006", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans006_1", "ans006_2", "ans006_3", "ans006_4" ] },
+{ "question" : "q007", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans007_1", "ans007_2", "ans007_3", "ans007_4" ] },
+{ "question" : "q008", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans008_1", "ans008_2", "ans008_3", "ans008_4" ] },
+{ "question" : "q009", "image" : "", "cA" : 0, "iA" : false, "ans" : [ "ans009_1", "ans009_2", "ans009_3", "ans009_4" ] }
+
 ]

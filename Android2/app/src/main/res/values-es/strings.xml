@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AndroidQuiz</string>
-    <string name="question">Pregunta</string>
-    <string name="check">COMPROBAR</string>
-    <string name="correct">Muy bien</string>
-    <string name="question_content">Es verdad?</string>
-    <string name="incorrect">Incorrecto</string>
+
+
+    <string name="app_name">Quiz</string>
+    <string name="question">Question</string>
+    <string name="check">Check</string>
+    <string name="correct">Very good!</string>
+    <string name="incorrect">Incorrect...</string>
+
+    <!-- Preguntas -->
+    <string name="q000">¿Cuál es una fruta?</string>
+    <string name="q001">¿Quién es este personaje?</string>
+    <string name="q002">¿Qué hace el hombre?</string>
+    <string name="q003">¿Cuál es Pepa?</string>
+    <string name="q004">¿Quién cantaba Buler�a?</string>
+
+    <!-- Respuestas -->
+    <string name="ans000_1">Tomate</string>
+    <string name="ans000_2">Lechuga</string>
+    <string name="ans000_3">Zanahoria</string>
+    <string name="ans000_4">Arroz</string>
+
+    <string name="ans001_1">Paco Pico</string>
+    <string name="ans001_2">Mariano Rajoy</string>
+    <string name="ans001_3">Peppa Pig</string>
+    <string name="ans001_4">Fernando Alonso</string>
+
+    <string name="ans002_1">Estornudar</string>
+    <string name="ans002_2">Toser</string>
+    <string name="ans002_3">Cantar</string>
+    <string name="ans002_4">Pensar en Andr�s</string>
+
+    <string name="ans003_1">artefinal</string>
+    <string name="ans003_2">artefinal</string>
+    <string name="ans003_3">artefinal</string>
+    <string name="ans003_4">pepa</string>
+
+    <string name="ans004_1">David Bisbal</string>
+    <string name="ans004_2">Galletero</string>
+    <string name="ans004_3">David Bustamante</string>
+    <string name="ans004_4">Eminem</string>
+
 </resources>

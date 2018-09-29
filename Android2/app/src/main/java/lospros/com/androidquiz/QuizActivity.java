@@ -24,6 +24,14 @@ import java.util.Scanner;
 
 public class QuizActivity extends AppCompatActivity {
 
+
+    //Variables:
+    Button[] buttons;
+    TextView text_question;
+    ImageView questionImg;
+    ArrayList<Question> questionList;
+    int cA;
+
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4
     };
@@ -49,7 +57,7 @@ public class QuizActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ArrayList<Question> questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
+        questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
 
 
 
@@ -57,22 +65,24 @@ public class QuizActivity extends AppCompatActivity {
 
 
         ///
-
-        Button[] buttons = { (Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
-        TextView text_question = (TextView) findViewById(R.id.text_question);
+        buttons = new Button[]{(Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
+        text_question = (TextView) findViewById(R.id.text_question);
         text_question.setText(questionList.get(0).getQuestion());
-        final ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-        questionImg.setImageResource(getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName()));
+        questionImg = (ImageView) findViewById(R.id.question_image);
+        //questionImg.setImageResource(getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName()));
 
-        String[] answers = questionList.get(0).getAns();
 
-        final int cA = questionList.get(0).getcA();
+
+        for (Button b : buttons){
+            b.setBackgroundResource(android.R.drawable.btn_default);
+        }
+
+
+
 
         for (int i = 0; i < ids_answers.length; i++) {
-            Button btn = buttons[i];
-            btn.setText(answers[i]);
             final int aux = i;
-            btn.setOnClickListener((new View.OnClickListener() {
+            buttons[i].setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (aux == cA) {
@@ -81,6 +91,8 @@ public class QuizActivity extends AppCompatActivity {
                         questionImg.setVisibility(View.GONE);
                         questionImg.setVisibility(View.VISIBLE);
                         questionImg.setImageResource(R.drawable.pepa);
+                        initQuestion(questionList.get(1));
+
                     } else {//Incorrecta
                         Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
                         //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
@@ -89,6 +101,38 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 }
             }));
+        }
+        initQuestion(questionList.get(0));
+    }
+
+    private void initQuestion(Question q){
+//getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName())
+        //Question
+        text_question.setText(getResources().getIdentifier(q.getQuestion(), "string", getPackageName()));
+
+        //Image (?)
+        if(q.getImage() != null) {
+            questionImg.setVisibility(View.VISIBLE);
+            questionImg.setImageResource(getResources().getIdentifier(q.getImage(), "drawable", getPackageName()));
+        }else{
+            questionImg.setVisibility(View.GONE);
+        }
+
+        //Correct Answer id
+        cA = q.getcA();
+
+        //image or text questions.
+        if(q.isiA()) {
+            for (int i = 0; i < buttons.length; i++) {
+                buttons[i].setBackgroundResource(getResources().getIdentifier(q.getAns()[i], "drawable", getPackageName()));
+                buttons[i].setText("");
+            }
+        }else{
+            for (int i = 0; i<buttons.length; i++){
+                buttons[i].setBackgroundResource(android.R.drawable.btn_default);
+                buttons[i].setText(getResources().getIdentifier(q.getAns()[i],"string", getPackageName()));
+            }
+
         }
     }
 }
