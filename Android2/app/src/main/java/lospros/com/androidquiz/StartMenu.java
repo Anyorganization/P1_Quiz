@@ -42,7 +42,7 @@ public class StartMenu extends AppCompatActivity {
     }
 
     public void openSettingsActivity(){
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+       /// Intent intent = new Intent(this, SettingsActivity.class);
+        //startActivity(intent);
     }
 }
