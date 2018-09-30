@@ -19,9 +19,6 @@ public class StartMenu extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.btn_start);
         settingsButton = (Button)findViewById(R.id.btn_settings);
 
-
-
-
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +39,7 @@ public class StartMenu extends AppCompatActivity {
     }
 
     public void openSettingsActivity(){
-       /// Intent intent = new Intent(this, SettingsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

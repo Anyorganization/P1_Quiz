@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        android:defaultValue="true"
+        android:key="example dfgpreo"
+        android:title="Ejemplo" />
+        android:summary="holaaaa" />
+
+<ListPreference
+    android:key="PREF_LIST"
+    android:title="ListPreference title"
+    android:summary="ListPreference summary"
+    android:entries="@array/listentries"
+    android:entryValues="@array/listvalues" />
+
+<ListPreference
+    android:key="PREF_LIST_2"
+    android:title="ListPreference title"
+    android:summary="ListPreference summary"
+    android:entries="@array/listentries"
+    android:entryValues="@array/listvalues" />
+
+
+
+</PreferenceScreen>
