@@ -21,22 +21,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
-/*
-
-
-public void confirmFireMissiles() {
-    DialogFragment newFragment = new FireMissilesDialogFragment();
-    newFragment.show(getSupportFragmentManager(), "missiles");
-
-
-
-}
-
- */
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDialog.NoticeDialogListener {
 
 
     //Variables:
@@ -46,6 +35,9 @@ public class QuizActivity extends AppCompatActivity {
     ArrayList<Question> questionList;
     int currentQuestion =0;
     int cA;
+
+    int score = 0;
+    int nQuestions;
 
 
 
@@ -75,7 +67,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
-
+        Collections.shuffle(questionList);
 
 
 
@@ -127,7 +119,8 @@ public class QuizActivity extends AppCompatActivity {
         //image or text questions.
         if(q.isiA()) {
             for (int i = 0; i < buttons.length; i++) {
-                buttons[i].setBackgroundResource(getResources().getIdentifier(q.getAns()[i], "drawable", getPackageName()));
+                String nameImg = getString(getResources().getIdentifier(q.getAns()[i], "string", getPackageName()));
+                buttons[i].setBackgroundResource(getResources().getIdentifier(nameImg, "drawable", getPackageName()));
                 buttons[i].setText("");
             }
         }else{
@@ -142,15 +135,31 @@ public class QuizActivity extends AppCompatActivity {
 
     private void checkQuestion(int aux){
         if (aux == cA) {
-            Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+            score += 3;
             currentQuestion++;
             initQuestion(questionList.get(currentQuestion));
 
         } else {//Incorrecta
-            Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
             //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
             DialogFragment fragmentDialog = new IncorrectAnswerDialog();
             fragmentDialog.show(getSupportFragmentManager(), "incorrentanswerdialog");
         }
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        if (currentQuestion < nQuestions - 1)
+            currentQuestion++;
+
+        score -= 2;
+        initQuestion(questionList.get(currentQuestion));
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        currentQuestion = 0;
+        score = 0;
+        initQuestion(questionList.get(currentQuestion));
     }
 }
