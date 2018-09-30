@@ -9,38 +9,73 @@
     <string name="incorrect">Incorrect...</string>
 
     <!-- Preguntas -->
-    <string name="q000">¿Cuál es una fruta?</string>
-    <string name="q001">¿Quién es este personaje?</string>
-    <string name="q002">¿Qué hace el hombre?</string>
-    <string name="q003">¿Cuál es Pepa?</string>
-    <string name="q004">¿Quién cantaba Buler�a?</string>
+    <string name="q000">¿Dónde está Oslo?</string>
+    <string name="q001">¿Qué ciudad es esta?</string>
+    <string name="q002">¿Dónde está la Fontana di Trevi?</string>
+    <string name="q003">¿Qué imagen es Tokio?</string>
+    <string name="q004">¿Cuál es la capital de EEUU?</string>
 
     <!-- Respuestas -->
-    <string name="ans000_1">Tomate</string>
-    <string name="ans000_2">Lechuga</string>
-    <string name="ans000_3">Zanahoria</string>
-    <string name="ans000_4">Arroz</string>
+    <string name="ans000_1">Finlandia</string>
+    <string name="ans000_2">Islandia</string>
+    <string name="ans000_3">Noruega</string>
+    <string name="ans000_4">Suecia</string>
 
-    <string name="ans001_1">Paco Pico</string>
-    <string name="ans001_2">Mariano Rajoy</string>
-    <string name="ans001_3">Peppa Pig</string>
-    <string name="ans001_4">Fernando Alonso</string>
+    <string name="ans001_1">Barcelona</string>
+    <string name="ans001_2">París</string>
+    <string name="ans001_3">Tel Aviv</string>
+    <string name="ans001_4">Berlín</string>
 
-    <string name="ans002_1">Estornudar</string>
-    <string name="ans002_2">Toser</string>
-    <string name="ans002_3">Cantar</string>
-    <string name="ans002_4">Pensar en Andr�s</string>
+    <string name="ans002_1">París</string>
+    <string name="ans002_2">Roma</string>
+    <string name="ans002_3">Atenas</string>
+    <string name="ans002_4">La Valeta</string>
 
-    <string name="ans003_1">artefinal</string>
-    <string name="ans003_2">artefinal</string>
-    <string name="ans003_3">artefinal</string>
-    <string name="ans003_4">pepa</string>
-
-    <string name="ans004_1">David Bisbal</string>
-    <string name="ans004_2">Galletero</string>
-    <string name="ans004_3">David Bustamante</string>
-    <string name="ans004_4">Eminem</string>
-    <string name="text_start_button">Start Quiz</string>
-    <string name="text_settings_button">Settings</string>
+    <string name="ans004_1">Washington DC</string>
+    <string name="ans004_2">Nueva York</string>
+    <string name="ans004_3">Houston</string>
+    <string name="ans004_4">Los Ángeles</string>
+    <string name="text_start_button">Comenzar Quiz</string>
+    <string name="text_settings_button">Configuración</string>
+    <string name="answer_dialog_msg">Respuesta incorrecta</string>
+    <string name="answer_dialog_positive">Continuar</string>
+    <string name="answer_dialog_negative">Reiniciar test</string>
+    <string name="q005">¿Dónde nació la famosa cantante Céline Dion?</string>
+    <string name="q006">¿Qué ciudad es esta?</string>
+    <string name="q007">¿Qué imagen es París?</string>
+    <string name="q008">¿Cuál es la capital de Australia?</string>
+    <string name="q009">¿Dónde nació el cantante Freddie Mercury?</string>
+    <string name="q010">¿Cuál es la capital de Hungría?</string>
+    <string name="q011">¿Cuál de estas imágenes no es Italia?</string>
+    <string name="q012">¿Dónde tuvieron lugar los Juegos Olímpicos de 2008?</string>
+    <string name="q013">¿De dónde zarpó el Titanic?</string>
+    <string name="q014">¿Qué imagen es El Cairo?</string>
+    <string name="ans005_1">Vancouver</string>
+    <string name="ans005_2">Montreal</string>
+    <string name="ans005_3">Toronto</string>
+    <string name="ans005_4">Quebec</string>
+    <string name="ans006_1">París</string>
+    <string name="ans006_2">Londres</string>
+    <string name="ans006_3">Dublín</string>
+    <string name="ans006_4">Leeds</string>
+    <string name="ans008_1">Sídney</string>
+    <string name="ans008_2">Camberra</string>
+    <string name="ans008_3">Melbourne</string>
+    <string name="ans008_4">Wellington</string>
+    <string name="ans009_1">Stone Town</string>
+    <string name="ans009_2">Londres</string>
+    <string name="ans009_3">California</string>
+    <string name="ans009_4">Budapest</string>
+    <string name="ans012_1">Río de Janeiro</string>
+    <string name="ans012_2">Barcelona</string>
+    <string name="ans012_3">Atenas</string>
+    <string name="ans012_4">Pekín</string>
+    <string name="ans013_1">Estambul</string>
+    <string name="ans013_2">Lisboa</string>
+    <string name="ans013_3">Southampton</string>
+    <string name="ans013_4">Alejandría</string>
+    <string name="title_activity_settings">Configuración</string>
+    <string name="nQuestions">Número de preguntas</string>
+    <string name="largeText">Fuente grande</string>
 
 </resources>

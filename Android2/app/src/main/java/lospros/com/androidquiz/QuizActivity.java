@@ -39,7 +39,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
     int cA;
 
     int score = 0;
-    int nQuestions = 4; //TODO esto
+    int nQuestions; //TODO esto
 
 
 
@@ -63,7 +63,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         Boolean largeFont = sharedPreferences.getBoolean("LARGE_FONT", false);
         //TODO Hacer fuente grande según convenga
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
-        //nQuestions = nQ;
+        nQuestions = nQ;
 
         Log.i("LargeFont",largeFont.toString());
         Log.i("nQuestions", Integer.toString(nQ));
@@ -78,7 +78,6 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
 
 
 
-        ArrayList<Question> qs = new ArrayList<>();
         ///Reading JSON.
         InputStream is = getResources().openRawResource(R.raw.questions);
         String dataFile = "";
@@ -163,8 +162,11 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         if (aux == cA) {
             //Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
-            currentQuestion++;
-            initQuestion(questionList.get(currentQuestion));
+            if (currentQuestion < (nQuestions - 1)) {
+                currentQuestion++;
+                initQuestion(questionList.get(currentQuestion));
+            }
+            //TODO else que lleve a actividad de fin de juego
 
         } else {//Incorrecta
             //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
@@ -175,11 +177,12 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        if (currentQuestion < nQuestions - 1)
-            currentQuestion++;
-
         score -= 2;
-        initQuestion(questionList.get(currentQuestion));
+        if (currentQuestion < (nQuestions - 1)){
+            currentQuestion++;
+            initQuestion(questionList.get(currentQuestion));
+        }
+        //TODO else que lleve a actividad de fin de juego
     }
 
     @Override

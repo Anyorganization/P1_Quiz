@@ -8,47 +8,109 @@
 
     <string name="app_name">Quiz</string>
     <string name="question">Question</string>
-    <string name="check">Check</string>
-    <string name="correct">Very good!</string>
-    <string name="incorrect">Incorrect...</string>
 
     <!-- Preguntas -->
-    <string name="q000">¿Cuál es una fruta?</string>
-    <string name="q001">¿Quién es este personaje?</string>
-    <string name="q002">¿Qué hace el hombre?</string>
-    <string name="q003">¿Cuál es Pepa?</string>
-    <string name="q004">¿Quién cantaba Buler�a?</string>
+    <string name="q000">Where is Oslo?</string>
+    <string name="q001">What city is this?</string>
+    <string name="q002">Where is the Trevi Fountain?</string>
+    <string name="q003">Which picture is Tokyo?</string>
+    <string name="q004">What is the capital of the USA?</string>
+    <string name="q005">Where was famous singer Céline Dion born?</string>
+    <string name="q006">What city is this?</string>
+    <string name="q007">Which picture is Paris?</string>
+    <string name="q008">What is the capital of Australia?</string>
+    <string name="q009">Where was singer Freddie Mercury born?</string>
+    <string name="q010">Which is the capital of Hungary?</string>
+    <string name="q011">Which of these is not in Italy?</string>
+    <string name="q012">Where did the Olympic Games take place in 2008?</string>
+    <string name="q013">Where did the Titanic sail from?</string>
+    <string name="q014">Which picture is Cairo?</string>
 
     <!-- Respuestas -->
-    <string name="ans000_1">Tomate</string>
-    <string name="ans000_2">Lechuga</string>
-    <string name="ans000_3">Zanahoria</string>
-    <string name="ans000_4">Arroz</string>
+    <string name="ans000_1">Finland</string>
+    <string name="ans000_2">Iceland</string>
+    <string name="ans000_3">Norway</string>
+    <string name="ans000_4">Sweden</string>
 
-    <string name="ans001_1">Paco Pico</string>
-    <string name="ans001_2">Mariano Rajoy</string>
-    <string name="ans001_3">Peppa Pig</string>
-    <string name="ans001_4">Fernando Alonso</string>
+    <string name="ans001_1">Barcelona</string>
+    <string name="ans001_2">Paris</string>
+    <string name="ans001_3">Tel Aviv</string>
+    <string name="ans001_4">Berlin</string>
 
-    <string name="ans002_1">Estornudar</string>
-    <string name="ans002_2">Toser</string>
-    <string name="ans002_3">Cantar</string>
-    <string name="ans002_4">Pensar en Andr�s</string>
+    <string name="ans002_1">Paris</string>
+    <string name="ans002_2">Rome</string>
+    <string name="ans002_3">Athens</string>
+    <string name="ans002_4">Valletta</string>
 
-    <string name="ans003_1">artefinal</string>
-    <string name="ans003_2">artefinal</string>
-    <string name="ans003_3">artefinal</string>
-    <string name="ans003_4">pepa</string>
+    <string name="ans003_1">seoul</string>
+    <string name="ans003_2">india</string>
+    <string name="ans003_3">sydney</string>
+    <string name="ans003_4">tokyo</string>
 
-    <string name="ans004_1">David Bisbal</string>
-    <string name="ans004_2">Galletero</string>
-    <string name="ans004_3">David Bustamante</string>
-    <string name="ans004_4">Eminem</string>
+    <string name="ans004_1">Washington DC</string>
+    <string name="ans004_2">New York</string>
+    <string name="ans004_3">Houston</string>
+    <string name="ans004_4">Los Angeles</string>
+
+    <string name="ans005_1">Vancouver</string>
+    <string name="ans005_2">Montreal</string>
+    <string name="ans005_3">Toronto</string>
+    <string name="ans005_4">Quebec</string>
+
+    <string name="ans006_1">Paris</string>
+    <string name="ans006_2">London</string>
+    <string name="ans006_3">Dublin</string>
+    <string name="ans006_4">Leeds</string>
+
+    <string name="ans007_1">paris</string>
+    <string name="ans007_2">seoul</string>
+    <string name="ans007_3">newyork</string>
+    <string name="ans007_4">abudabi</string>
+
+    <string name="ans008_1">Sydney</string>
+    <string name="ans008_2">Canberra</string>
+    <string name="ans008_3">Melbourne</string>
+    <string name="ans008_4">Wellington</string>
+
+    <string name="ans009_1">Stone Town</string>
+    <string name="ans009_2">London</string>
+    <string name="ans009_3">California</string>
+    <string name="ans009_4">Budapest</string>
+
+    <string name="ans010_1">india</string>
+    <string name="ans010_2">morocco</string>
+    <string name="ans010_3">budapest</string>
+    <string name="ans010_4">kiev</string>
+
+    <string name="ans011_1">rome</string>
+    <string name="ans011_2">paris</string>
+    <string name="ans011_3">florence</string>
+    <string name="ans011_4">venice</string>
+
+    <string name="ans012_1">Rio de Janeiro</string>
+    <string name="ans012_2">Barcelona</string>
+    <string name="ans012_3">Athens</string>
+    <string name="ans012_4">Beijing</string>
+
+    <string name="ans013_1">Istanbul</string>
+    <string name="ans013_2">Lisbon</string>
+    <string name="ans013_3">Southampton</string>
+    <string name="ans013_4">Alexandria</string>
+
+    <string name="ans014_1">dubai</string>
+    <string name="ans014_2">morocco</string>
+    <string name="ans014_3">kiev</string>
+    <string name="ans014_4">cairo</string>
+
+
+
+
+
+
     <string name="text_start_button">Start Quiz</string>
     <string name="text_settings_button">Settings</string>
     <string name="title_activity_settings">Settings</string>
     <string name="nQuestions">Number of questions</string>
-    <string name="textSize">Text size</string>
     <string name="largeText">Large font</string>
 
 
