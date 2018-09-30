@@ -47,6 +47,9 @@
     <string name="text_start_button">Start Quiz</string>
     <string name="text_settings_button">Settings</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="nQuestions">Number of questions</string>
+    <string name="textSize">Text size</string>
+    <string name="largeText">Large font</string>
 
 
 </resources>

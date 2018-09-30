@@ -6,19 +6,15 @@
         android:summary="holaaaa" />
 
 <ListPreference
-    android:key="PREF_LIST"
-    android:title="ListPreference title"
-    android:summary="ListPreference summary"
-    android:entries="@array/listentries"
-    android:entryValues="@array/listvalues" />
+    android:key="N_QUESTIONS"
+    android:title="@string/nQuestions"
+    android:entries="@array/nQuestions_listentries"
+    android:entryValues="@array/nQuestions_listvalues" />
 
-<ListPreference
-    android:key="PREF_LIST_2"
-    android:title="ListPreference title"
-    android:summary="ListPreference summary"
-    android:entries="@array/listentries"
-    android:entryValues="@array/listvalues" />
-
+<SwitchPreference
+    android:defaultValue="false"
+    android:key="LARGE_FONT"
+    android:title="@string/largeText" />
 
 
 </PreferenceScreen>

@@ -1,5 +1,7 @@
 package lospros.com.androidquiz;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +49,30 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        //// Settings:
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        /*Boolean prefCheckBox = sharedPreferences.getBoolean("PREF_CHECKBOX", false);
+        //settingCheckBox.setText("CHECKBOX preference = " + prefCheckBox.toString());
+        String prefList = sharedPreferences.getString("PREF_LIST", "no selection");
+        //settingList.setText("LIST preference = " + prefList);*/
+
+
+        Boolean largeFont = sharedPreferences.getBoolean("LARGE_FONT", false);
+        //TODO Hacer fuente grande según convenga
+        int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
+        //nQuestions = nQ;
+
+        Log.i("LargeFont",largeFont.toString());
+        Log.i("nQuestions", Integer.toString(nQ));
+
+
+        ////
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
