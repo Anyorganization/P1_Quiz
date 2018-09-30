@@ -40,5 +40,7 @@
     <string name="ans004_2">Galletero</string>
     <string name="ans004_3">David Bustamante</string>
     <string name="ans004_4">Eminem</string>
+    <string name="text_start_button">Start Quiz</string>
+    <string name="text_settings_button">Settings</string>
 
 </resources>

@@ -37,7 +37,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
     int cA;
 
     int score = 0;
-    int nQuestions;
+    int nQuestions = 4; //TODO esto
 
 
 
@@ -67,7 +67,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         }
 
         questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
-        Collections.shuffle(questionList);
+
 
 
 
