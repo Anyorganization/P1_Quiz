@@ -23,25 +23,15 @@
         android:id="@+id/btn_settings"
         android:layout_width="222dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="148dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="8dp"
         android:text="@string/text_settings_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
-
-    <Button
-        android:id="@+id/btn_exit"
-        android:layout_width="222dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="161dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_start"
+        app:layout_constraintVertical_bias="0.057" />
+
 </android.support.constraint.ConstraintLayout>

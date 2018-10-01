@@ -1,5 +1,6 @@
 package lospros.com.androidquiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,4 +43,7 @@ public class StartMenu extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {}
 }

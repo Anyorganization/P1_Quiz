@@ -1,5 +1,7 @@
 package lospros.com.androidquiz;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
@@ -165,8 +167,11 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
             if (currentQuestion < (nQuestions - 1)) {
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
+            }else{
+                Intent intent = new Intent(this, EndOfQuiz.class); //TODO cambiar this por StartMenu
+                intent.putExtra("score", score);
+                startActivity(intent);
             }
-            //TODO else que lleve a actividad de fin de juego
 
         } else {//Incorrecta
             //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
@@ -181,8 +186,11 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         if (currentQuestion < (nQuestions - 1)){
             currentQuestion++;
             initQuestion(questionList.get(currentQuestion));
+        }else{
+            Intent intent = new Intent(this, EndOfQuiz.class); //TODO cambiar this por StartMenu
+            intent.putExtra("score", score);
+            startActivity(intent);
         }
-        //TODO else que lleve a actividad de fin de juego
     }
 
     @Override
