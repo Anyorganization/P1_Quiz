@@ -62,12 +62,18 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         //settingList.setText("LIST preference = " + prefList);*/
 
 
-        Boolean largeFont = sharedPreferences.getBoolean("LARGE_FONT", false);
-        //TODO Hacer fuente grande según convenga
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            super.setTheme(R.style.DarkTheme);
+        }else{
+            super.setTheme(R.style.LightTheme);
+        }
+
+
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
         nQuestions = nQ;
 
-        Log.i("LargeFont",largeFont.toString());
+        Log.i("darkTheme", darkTheme.toString());
         Log.i("nQuestions", Integer.toString(nQ));
 
 
@@ -162,7 +168,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
 
     private void checkQuestion(int aux){
         if (aux == cA) {
-            //Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+            Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
             if (currentQuestion < (nQuestions - 1)) {
                 currentQuestion++;

@@ -4,7 +4,9 @@ package lospros.com.androidquiz;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 public class SettingsActivity extends Activity {
 
@@ -17,5 +19,6 @@ public class SettingsActivity extends Activity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(android.R.id.content, prefFragment);
         fragmentTransaction.commit();
+
     }
 }

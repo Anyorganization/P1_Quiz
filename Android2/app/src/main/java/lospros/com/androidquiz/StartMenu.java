@@ -2,6 +2,8 @@ package lospros.com.androidquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,7 +35,22 @@ public class StartMenu extends AppCompatActivity {
                 openSettingsActivity();
             }
         });
+
+
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            getApplication().setTheme(R.style.DarkTheme);
+        }else{
+            getApplication().setTheme(R.style.LightTheme);
+        }
+    }
+
     public void openQuizActivity(){
         Intent intent = new Intent(this, QuizActivity.class);
         startActivity(intent);

@@ -3,10 +3,8 @@
 
 
     <string name="app_name">Quiz</string>
-    <string name="question">Question</string>
-    <string name="check">Check</string>
-    <string name="correct">Very good!</string>
-    <string name="incorrect">Incorrect...</string>
+    <string name="question">Pregunta</string>
+    <string name="correct">¡Correcto!</string>
 
     <!-- Preguntas -->
     <string name="q000">¿Dónde está Oslo?</string>
@@ -39,7 +37,7 @@
     <string name="text_settings_button">Configuración</string>
     <string name="answer_dialog_msg">Respuesta incorrecta</string>
     <string name="answer_dialog_positive">Continuar</string>
-    <string name="answer_dialog_negative">Reiniciar test</string>
+    <string name="answer_dialog_negative">Reiniciar quiz</string>
     <string name="q005">¿Dónde nació la famosa cantante Céline Dion?</string>
     <string name="q006">¿Qué ciudad es esta?</string>
     <string name="q007">¿Qué imagen es París?</string>
@@ -79,5 +77,6 @@
     <string name="largeText">Fuente grande</string>
     <string name="endGameText">Puntuación:</string>
     <string name="restartButton">Jugar otra vez</string>
+    <string name="darkTheme">Tema oscuro</string>
 
 </resources>

@@ -25,7 +25,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/label_question"
-        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/label_question"
         app:layout_constraintTop_toBottomOf="@+id/label_question"

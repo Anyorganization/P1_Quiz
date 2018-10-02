@@ -21,7 +21,7 @@ public class IncorrectAnswerDialog extends DialogFragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.answer_dialog_msg)
+        builder.setTitle(R.string.answer_dialog_msg)
                 .setPositiveButton(R.string.answer_dialog_positive, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         listener.onDialogPositiveClick(IncorrectAnswerDialog.this);

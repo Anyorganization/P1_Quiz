@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
         android:defaultValue="true"
-        android:key="example dfgpreo"
-        android:title="Ejemplo" />
-        android:summary="holaaaa" />
+        android:key="preferences"
+        android:title="Preferences" />
+
 
 <ListPreference
     android:key="N_QUESTIONS"
@@ -13,8 +13,8 @@
 
 <SwitchPreference
     android:defaultValue="false"
-    android:key="LARGE_FONT"
-    android:title="@string/largeText" />
+    android:key="DARK_THEME"
+    android:title="@string/darkTheme" />
 
 
 </PreferenceScreen>

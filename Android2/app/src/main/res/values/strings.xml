@@ -4,8 +4,8 @@
     <!-- Incorrect Answer Dialog -->
     <string name="answer_dialog_msg">Wrong answer</string>
     <string name="answer_dialog_positive">Continue</string>
-    <string name="answer_dialog_negative">Reset test</string>
-
+    <string name="answer_dialog_negative">Reset quiz</string>
+    <string name="correct">Nice!</string>
     <string name="app_name">Quiz</string>
     <string name="question">Question</string>
 
@@ -42,10 +42,10 @@
     <string name="ans002_3">Athens</string>
     <string name="ans002_4">Valletta</string>
 
-    <string name="ans003_1">seoul</string>
-    <string name="ans003_2">india</string>
-    <string name="ans003_3">sydney</string>
-    <string name="ans003_4">tokyo</string>
+    <string name="ans003_1" translatable="false">seoul</string>
+    <string name="ans003_2" translatable="false">india</string>
+    <string name="ans003_3" translatable="false">sydney</string>
+    <string name="ans003_4" translatable="false">tokyo</string>
 
     <string name="ans004_1">Washington DC</string>
     <string name="ans004_2">New York</string>
@@ -62,10 +62,10 @@
     <string name="ans006_3">Dublin</string>
     <string name="ans006_4">Leeds</string>
 
-    <string name="ans007_1">paris</string>
-    <string name="ans007_2">seoul</string>
-    <string name="ans007_3">newyork</string>
-    <string name="ans007_4">abudabi</string>
+    <string name="ans007_1" translatable="false">paris</string>
+    <string name="ans007_2" translatable="false">seoul</string>
+    <string name="ans007_3" translatable="false">newyork</string>
+    <string name="ans007_4" translatable="false">abudabi</string>
 
     <string name="ans008_1">Sydney</string>
     <string name="ans008_2">Canberra</string>
@@ -77,15 +77,15 @@
     <string name="ans009_3">California</string>
     <string name="ans009_4">Budapest</string>
 
-    <string name="ans010_1">india</string>
-    <string name="ans010_2">morocco</string>
-    <string name="ans010_3">budapest</string>
-    <string name="ans010_4">kiev</string>
+    <string name="ans010_1" translatable="false">india</string>
+    <string name="ans010_2" translatable="false">morocco</string>
+    <string name="ans010_3" translatable="false">budapest</string>
+    <string name="ans010_4" translatable="false">kiev</string>
 
-    <string name="ans011_1">rome</string>
-    <string name="ans011_2">paris</string>
-    <string name="ans011_3">florence</string>
-    <string name="ans011_4">venice</string>
+    <string name="ans011_1" translatable="false">rome</string>
+    <string name="ans011_2" translatable="false">paris</string>
+    <string name="ans011_3" translatable="false">florence</string>
+    <string name="ans011_4" translatable="false">venice</string>
 
     <string name="ans012_1">Rio de Janeiro</string>
     <string name="ans012_2">Barcelona</string>
@@ -97,10 +97,10 @@
     <string name="ans013_3">Southampton</string>
     <string name="ans013_4">Alexandria</string>
 
-    <string name="ans014_1">dubai</string>
-    <string name="ans014_2">morocco</string>
-    <string name="ans014_3">kiev</string>
-    <string name="ans014_4">cairo</string>
+    <string name="ans014_1" translatable="false">dubai</string>
+    <string name="ans014_2" translatable="false">morocco</string>
+    <string name="ans014_3" translatable="false">kiev</string>
+    <string name="ans014_4" translatable="false">cairo</string>
 
 
     <string name="text_start_button">Start Quiz</string>
@@ -110,6 +110,6 @@
     <string name="largeText">Large font</string>
     <string name="endGameText">Score:</string>
     <string name="restartButton">Play again</string>
-
+    <string name="darkTheme">Dark theme</string>
 
 </resources>
