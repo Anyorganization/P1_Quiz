@@ -3,6 +3,7 @@ package lospros.com.androidquiz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 
-public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDialog.NoticeDialogListener {
+public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswerDialog.NoticeDialogListener */{
 
 
     //Variables:
@@ -41,7 +42,8 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
     int cA;
 
     int score = 0;
-    int nQuestions; //TODO esto
+    int nQuestions;
+    String topoc;
 
 
 
@@ -61,7 +63,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         String prefList = sharedPreferences.getString("PREF_LIST", "no selection");
         //settingList.setText("LIST preference = " + prefList);*/
 
-
+    //Select Theme
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
         if(darkTheme){
             super.setTheme(R.style.DarkTheme);
@@ -70,16 +72,27 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         }
 
 
+        //AUDIO TEST
+        MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
+
+        mediaPlayer.start();
+
+
+        //Read Shared-Preferences
+
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
         nQuestions = nQ;
-
         Log.i("darkTheme", darkTheme.toString());
         Log.i("nQuestions", Integer.toString(nQ));
 
+        topoc = sharedPreferences.getString("TOPIC","topic0");
+
+
+
+
+
 
         ////
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
@@ -100,6 +113,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         }
 
         questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
+        Collections.shuffle(questionList);
 
 
 
@@ -167,25 +181,33 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
 
 
     private void checkQuestion(int aux){
-        if (aux == cA) {
+        if (aux == cA) {//Correct Answer!
             Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
-            if (currentQuestion < (nQuestions - 1)) {
+            if (currentQuestion < (nQuestions - 1)) {//Si no es la última
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
-            }else{
-                Intent intent = new Intent(this, EndOfQuiz.class); //TODO cambiar this por StartMenu
+            }else{//Si es la última:
+                Intent intent = new Intent(this, EndOfQuiz.class); //Mostrar pantalla de final.
                 intent.putExtra("score", score);
                 startActivity(intent);
             }
 
         } else {//Incorrecta
-            //ImageView questionImg = (ImageView) findViewById(R.id.question_image);
-            DialogFragment fragmentDialog = new IncorrectAnswerDialog();
-            fragmentDialog.show(getSupportFragmentManager(), "incorrentanswerdialog");
+            Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+            score -= 2;
+            if (currentQuestion < (nQuestions - 1)){
+                currentQuestion++;
+                initQuestion(questionList.get(currentQuestion));
+            }else{
+                Intent intent = new Intent(this, EndOfQuiz.class);
+                intent.putExtra("score", score);
+                startActivity(intent);
+            }
         }
     }
 
+    /*
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         score -= 2;
@@ -193,7 +215,7 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
             currentQuestion++;
             initQuestion(questionList.get(currentQuestion));
         }else{
-            Intent intent = new Intent(this, EndOfQuiz.class); //TODO cambiar this por StartMenu
+            Intent intent = new Intent(this, EndOfQuiz.class);
             intent.putExtra("score", score);
             startActivity(intent);
         }
@@ -205,4 +227,5 @@ public class QuizActivity extends AppCompatActivity implements IncorrectAnswerDi
         score = 0;
         initQuestion(questionList.get(currentQuestion));
     }
+    */
 }

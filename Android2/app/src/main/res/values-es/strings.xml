@@ -78,5 +78,10 @@
     <string name="endGameText">Puntuación:</string>
     <string name="restartButton">Jugar otra vez</string>
     <string name="darkTheme">Tema oscuro</string>
+    <string name="incorrect">Incorrecto</string>
+    <string name="topic_title">Temática</string>
+    <string name="topic0">Ciudades</string>
+    <string name="topic1">Juegos</string>
+    <string name="topic2">Supernenas</string>
 
 </resources>

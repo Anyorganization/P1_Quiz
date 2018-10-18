@@ -16,5 +16,11 @@
     android:key="DARK_THEME"
     android:title="@string/darkTheme" />
 
+<ListPreference
+    android:key="TOPIC"
+    android:title="@string/topic_title"
+    android:entries="@array/topic_list_entries"
+    android:entryValues="@array/topic_list_values" />
+
 
 </PreferenceScreen>
