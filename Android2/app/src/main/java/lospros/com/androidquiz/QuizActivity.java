@@ -3,8 +3,14 @@ package lospros.com.androidquiz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,10 +18,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,6 +37,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+
+
+// Change layout: setContentView(R.layout.video_layout);
 
 public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswerDialog.NoticeDialogListener */{
 
@@ -74,8 +85,8 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         //AUDIO TEST
         MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
-
         mediaPlayer.start();
+
 
 
         //Read Shared-Preferences
@@ -184,6 +195,35 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         if (aux == cA) {//Correct Answer!
             Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
+            setContentView(R.layout.video_layout);
+
+            VideoView videoView = findViewById(R.id.videoView);
+            videoView.setZOrderMediaOverlay(true);
+
+            String videoFile = "android.resource://"+getPackageName()+"/"+R.raw.calico;
+
+
+            videoView.setVideoURI(Uri.parse(videoFile));
+
+
+            MediaController mc = new MediaController(this);
+            mc.setAnchorView(videoView);
+            videoView.setMediaController(mc);
+
+            videoView.requestFocus();
+            videoView.setVisibility(View.VISIBLE);
+            videoView.setZOrderOnTop(true);
+            videoView.setBackgroundColor(Color.TRANSPARENT);
+            videoView.start();
+          
+
+
+
+
+
+
+
+
             if (currentQuestion < (nQuestions - 1)) {//Si no es la última
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
