@@ -12,97 +12,83 @@
     <string name="question">Question</string>
 
     <!-- Preguntas -->
-    <string name="q000">Where is Oslo?</string>
-    <string name="q001">What city is this?</string>
-    <string name="q002">Where is the Trevi Fountain?</string>
-    <string name="q003">Which picture is Tokyo?</string>
-    <string name="q004">What is the capital of the USA?</string>
-    <string name="q005">Where was famous singer Céline Dion born?</string>
-    <string name="q006">What city is this?</string>
-    <string name="q007">Which picture is Paris?</string>
-    <string name="q008">What is the capital of Australia?</string>
-    <string name="q009">Where was singer Freddie Mercury born?</string>
-    <string name="q010">Which is the capital of Hungary?</string>
-    <string name="q011">Which of these is not in Italy?</string>
-    <string name="q012">Where did the Olympic Games take place in 2008?</string>
-    <string name="q013">Where did the Titanic sail from?</string>
-    <string name="q014">Which picture is Cairo?</string>
-
+    <string name="topic0_q000">Where is Oslo?</string>
+    <string name="topic0_q001">What city is this?</string>
+    <string name="topic0_q002">Where is the Trevi Fountain?</string>
+    <string name="topic0_q003">Which picture is Tokyo?</string>
+    <string name="topic0_q004">What is the capital of the USA?</string>
+    <string name="topic0_q005">Where was famous singer Céline Dion born?</string>
+    <string name="topic0_q006">What city is this?</string>
+    <string name="topic0_q007">Which picture is Paris?</string>
+    <string name="topic0_q008">What is the capital of Australia?</string>
+    <string name="topic0_q009">Where was singer Freddie Mercury born?</string>
+    <string name="topic0_q010">Which is the capital of Hungary?</string>
+    <string name="topic0_q011">Which of these is not in Italy?</string>
+    <string name="topic0_q012">Where did the Olympic Games take place in 2008?</string>
+    <string name="topic0_q013">Where did the Titanic sail from?</string>
+    <string name="topic0_q014">Which picture is Cairo?</string>
+topic0_
     <!-- Respuestas -->
-    <string name="ans000_1">Finland</string>
-    <string name="ans000_2">Iceland</string>
-    <string name="ans000_3">Norway</string>
-    <string name="ans000_4">Sweden</string>
-
-    <string name="ans001_1">Barcelona</string>
-    <string name="ans001_2">Paris</string>
-    <string name="ans001_3">Tel Aviv</string>
-    <string name="ans001_4">Berlin</string>
-
-    <string name="ans002_1">Paris</string>
-    <string name="ans002_2">Rome</string>
-    <string name="ans002_3">Athens</string>
-    <string name="ans002_4">Valletta</string>
-
-    <string name="ans003_1" translatable="false">seoul</string>
-    <string name="ans003_2" translatable="false">india</string>
-    <string name="ans003_3" translatable="false">sydney</string>
-    <string name="ans003_4" translatable="false">tokyo</string>
-
-    <string name="ans004_1">Washington DC</string>
-    <string name="ans004_2">New York</string>
-    <string name="ans004_3">Houston</string>
-    <string name="ans004_4">Los Angeles</string>
-
-    <string name="ans005_1">Vancouver</string>
-    <string name="ans005_2">Montreal</string>
-    <string name="ans005_3">Toronto</string>
-    <string name="ans005_4">Quebec</string>
-
-    <string name="ans006_1">Paris</string>
-    <string name="ans006_2">London</string>
-    <string name="ans006_3">Dublin</string>
-    <string name="ans006_4">Leeds</string>
-
-    <string name="ans007_1" translatable="false">paris</string>
-    <string name="ans007_2" translatable="false">seoul</string>
-    <string name="ans007_3" translatable="false">newyork</string>
-    <string name="ans007_4" translatable="false">abudabi</string>
-
-    <string name="ans008_1">Sydney</string>
-    <string name="ans008_2">Canberra</string>
-    <string name="ans008_3">Melbourne</string>
-    <string name="ans008_4">Wellington</string>
-
-    <string name="ans009_1">Stone Town</string>
-    <string name="ans009_2">London</string>
-    <string name="ans009_3">California</string>
-    <string name="ans009_4">Budapest</string>
-
-    <string name="ans010_1" translatable="false">india</string>
-    <string name="ans010_2" translatable="false">morocco</string>
-    <string name="ans010_3" translatable="false">budapest</string>
-    <string name="ans010_4" translatable="false">kiev</string>
-
-    <string name="ans011_1" translatable="false">rome</string>
-    <string name="ans011_2" translatable="false">paris</string>
-    <string name="ans011_3" translatable="false">florence</string>
-    <string name="ans011_4" translatable="false">venice</string>
-
-    <string name="ans012_1">Rio de Janeiro</string>
-    <string name="ans012_2">Barcelona</string>
-    <string name="ans012_3">Athens</string>
-    <string name="ans012_4">Beijing</string>
-
-    <string name="ans013_1">Istanbul</string>
-    <string name="ans013_2">Lisbon</string>
-    <string name="ans013_3">Southampton</string>
-    <string name="ans013_4">Alexandria</string>
-
-    <string name="ans014_1" translatable="false">dubai</string>
-    <string name="ans014_2" translatable="false">morocco</string>
-    <string name="ans014_3" translatable="false">kiev</string>
-    <string name="ans014_4" translatable="false">cairo</string>
+    <string name="topic0_ans000_1">Finland</string>
+    <string name="topic0_ans000_2">Iceland</string>
+    <string name="topic0_ans000_3">Norway</string>
+    <string name="topic0_ans000_4">Sweden</string>
+    <string name="topic0_ans001_1">Barcelona</string>
+    <string name="topic0_ans001_2">Paris</string>
+    <string name="topic0_ans001_3">Tel Aviv</string>
+    <string name="topic0_ans001_4">Berlin</string>
+    <string name="topic0_ans002_1">Paris</string>
+    <string name="topic0_ans002_2">Rome</string>
+    <string name="topic0_ans002_3">Athens</string>
+    <string name="topic0_ans002_4">Valletta</string>
+    <string name="topic0_ans003_1" translatable="false">seoul</string>
+    <string name="topic0_ans003_2" translatable="false">india</string>
+    <string name="topic0_ans003_3" translatable="false">sydney</string>
+    <string name="topic0_ans003_4" translatable="false">tokyo</string>
+    <string name="topic0_ans004_1">Washington DC</string>
+    <string name="topic0_ans004_2">New York</string>
+    <string name="topic0_ans004_3">Houston</string>
+    <string name="topic0_ans004_4">Los Angeles</string>
+    <string name="topic0_ans005_1">Vancouver</string>
+    <string name="topic0_ans005_2">Montreal</string>
+    <string name="topic0_ans005_3">Toronto</string>
+    <string name="topic0_ans005_4">Quebec</string>
+    <string name="topic0_ans006_1">Paris</string>
+    <string name="topic0_ans006_2">London</string>
+    <string name="topic0_ans006_3">Dublin</string>
+    <string name="topic0_ans006_4">Leeds</string>
+    <string name="topic0_ans007_1" translatable="false">paris</string>
+    <string name="topic0_ans007_2" translatable="false">seoul</string>
+    <string name="topic0_ans007_3" translatable="false">newyork</string>
+    <string name="topic0_ans007_4" translatable="false">abudabi</string>
+    <string name="topic0_ans008_1">Sydney</string>
+    <string name="topic0_ans008_2">Canberra</string>
+    <string name="topic0_ans008_3">Melbourne</string>
+    <string name="topic0_ans008_4">Wellington</string>
+    <string name="topic0_ans009_1">Stone Town</string>
+    <string name="topic0_ans009_2">London</string>
+    <string name="topic0_ans009_3">California</string>
+    <string name="topic0_ans009_4">Budapest</string>
+    <string name="topic0_ans010_1" translatable="false">india</string>
+    <string name="topic0_ans010_2" translatable="false">morocco</string>
+    <string name="topic0_ans010_3" translatable="false">budapest</string>
+    <string name="topic0_ans010_4" translatable="false">kiev</string>
+    <string name="topic0_ans011_1" translatable="false">rome</string>
+    <string name="topic0_ans011_2" translatable="false">paris</string>
+    <string name="topic0_ans011_3" translatable="false">florence</string>
+    <string name="topic0_ans011_4" translatable="false">venice</string>
+    <string name="topic0_ans012_1">Rio de Janeiro</string>
+    <string name="topic0_ans012_2">Barcelona</string>
+    <string name="topic0_ans012_3">Athens</string>
+    <string name="topic0_ans012_4">Beijing</string>
+    <string name="topic0_ans013_1">Istanbul</string>
+    <string name="topic0_ans013_2">Lisbon</string>
+    <string name="topic0_ans013_3">Southampton</string>
+    <string name="topic0_ans013_4">Alexandria</string>
+    <string name="topic0_ans014_1" translatable="false">dubai</string>
+    <string name="topic0_ans014_2" translatable="false">morocco</string>
+    <string name="topic0_ans014_3" translatable="false">kiev</string>
+    <string name="topic0_ans014_4" translatable="false">cairo</string>
 
     <!-- Config -->
     <string name="text_start_button">Start Quiz</string>

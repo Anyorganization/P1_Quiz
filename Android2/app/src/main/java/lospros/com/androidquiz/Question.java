@@ -2,7 +2,8 @@ package lospros.com.androidquiz;
 
 public class Question {
     private String question = null;
-    private String image =  null;
+    private String type;
+    private String path =  null;
     private int cA;
     private boolean iA;//text (false) or images (true) on Answers
     private  String [] ans = new String[4];//Text or name of images.
@@ -11,12 +12,12 @@ public class Question {
     }
 
 
-    public Question(String question, String image, int cA, boolean iA, String[] ans) {
+    public Question(String question, String path, int cA, boolean iA, String[] ans) {
         this.question = question;
-        if(image.equals("")){
-            this.image = image;
+        if(path.equals("")){
+            this.path = path;
         }else{
-            this.image = null;
+            this.path = null;
         }
         this.cA = cA;
         this.iA = iA;
@@ -31,12 +32,12 @@ public class Question {
         this.question = question;
     }
 
-    public String getImage() {
-        return image;
+    public String getPath() {
+        return path;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public int getcA() {
@@ -62,4 +63,8 @@ public class Question {
     public void setAns(String[] ans) {
         this.ans = ans;
     }
+
+    public String getType() { return type;  }
+
+    public void setType(String type) { this.type = type; }
 }

@@ -69,10 +69,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         //// Settings:
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        /*Boolean prefCheckBox = sharedPreferences.getBoolean("PREF_CHECKBOX", false);
-        //settingCheckBox.setText("CHECKBOX preference = " + prefCheckBox.toString());
-        String prefList = sharedPreferences.getString("PREF_LIST", "no selection");
-        //settingList.setText("LIST preference = " + prefList);*/
+
 
     //Select Theme
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
@@ -85,11 +82,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         //AUDIO TEST
         MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
-        mediaPlayer.start();
 
-
-
-        //Read Shared-Preferences
 
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
         nQuestions = nQ;
@@ -98,17 +91,10 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         topoc = sharedPreferences.getString("TOPIC","topic0");
 
-
-
-
-
-
         ////
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-
 
         ///Reading JSON.
         InputStream is = getResources().openRawResource(R.raw.questions);
@@ -126,27 +112,19 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
         Collections.shuffle(questionList);
 
+        initQuestion(questionList.get(currentQuestion));
+    }
 
+    private void loadCommonStuff(Question q){
 
-
-
-
-        ///
+        //BUTTONS:
         buttons = new Button[]{(Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
         text_question = (TextView) findViewById(R.id.text_question);
-        text_question.setText(questionList.get(0).getQuestion());
-        questionImg = (ImageView) findViewById(R.id.question_image);
-        //questionImg.setImageResource(getResources().getIdentifier(questionList.get(0).getImage(), "drawable", getPackageName()));
-
-
+        text_question.setText(getResources().getIdentifier(q.getQuestion(), "string", getPackageName()));
 
         for (Button b : buttons){
             b.setBackgroundResource(android.R.drawable.btn_default);
         }
-
-
-
-
         for (int i = 0; i < ids_answers.length; i++) {
             final int aux = i;
             buttons[i].setOnClickListener((new View.OnClickListener() {
@@ -155,20 +133,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
                     checkQuestion(aux);
                 }
             }));
-        }
-        initQuestion(questionList.get(currentQuestion));
-    }
-
-    private void initQuestion(Question q){
-        //Question
-        text_question.setText(getResources().getIdentifier(q.getQuestion(), "string", getPackageName()));
-
-        //Image (?)
-        if(q.getImage() != null) {
-            questionImg.setVisibility(View.VISIBLE);
-            questionImg.setImageResource(getResources().getIdentifier(q.getImage(), "drawable", getPackageName()));
-        }else{
-            questionImg.setVisibility(View.GONE);
         }
 
         //Correct Answer id
@@ -191,38 +155,83 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     }
 
 
+
+
+
+    private void initQuestion(Question q){
+
+        String type = q.getType();
+
+        switch (type){
+            case "text":
+                setContentView(R.layout.activity_quiz);
+                questionImg = (ImageView) findViewById(R.id.question_image);
+                questionImg.setVisibility(View.GONE);
+                break;
+            case "image":
+                setContentView(R.layout.activity_quiz);
+
+                questionImg = (ImageView) findViewById(R.id.question_image);
+                questionImg.setVisibility(View.VISIBLE);
+                questionImg.setImageResource(getResources().getIdentifier(q.getPath(), "drawable", getPackageName()));
+                break;
+            case "video":
+                loadVideo(q.getPath());
+                break;
+
+            case "audio":
+                //TODO preguntas de audio.
+                Log.i("switch initQuestion: ","Pregunta de Audio");
+                currentQuestion++;
+                initQuestion(questionList.get(currentQuestion));
+                break;
+
+
+            default: Log.i("switch initQuestion: ","Esto no debería pasar.");
+                currentQuestion++;
+                initQuestion(questionList.get(currentQuestion));
+                break;
+
+
+        }
+
+
+        loadCommonStuff(q);
+
+
+
+
+    }
+    private void loadVideo(String name ){
+
+        setContentView(R.layout.video_layout);
+
+        VideoView videoView = findViewById(R.id.videoView);
+
+        Log.i("id Video",Integer.toString(getResources().getIdentifier("calico","raw",getPackageName())) );
+        String videoFile = "android.resource://"+getPackageName()+"/"+ getResources().getIdentifier(name,"raw",getPackageName());//R.raw.calico; //
+
+
+        videoView.setVideoURI(Uri.parse(videoFile));
+
+
+        MediaController mc = new MediaController(this);
+        mc.setAnchorView(videoView);
+        videoView.setMediaController(mc);
+
+        //videoView.requestFocus();
+
+        videoView.setZOrderOnTop(true);
+
+        videoView.start();
+    }
+
     private void checkQuestion(int aux){
         if (aux == cA) {//Correct Answer!
             Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
-            setContentView(R.layout.video_layout);
 
-            VideoView videoView = findViewById(R.id.videoView);
-            videoView.setZOrderMediaOverlay(true);
-
-            String videoFile = "android.resource://"+getPackageName()+"/"+R.raw.calico;
-
-
-            videoView.setVideoURI(Uri.parse(videoFile));
-
-
-            MediaController mc = new MediaController(this);
-            mc.setAnchorView(videoView);
-            videoView.setMediaController(mc);
-
-            videoView.requestFocus();
-            videoView.setVisibility(View.VISIBLE);
-            videoView.setZOrderOnTop(true);
-            videoView.setBackgroundColor(Color.TRANSPARENT);
-            videoView.start();
-          
-
-
-
-
-
-
-
+            //loadVideo("calico");
 
             if (currentQuestion < (nQuestions - 1)) {//Si no es la última
                 currentQuestion++;
@@ -247,25 +256,4 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         }
     }
 
-    /*
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        score -= 2;
-        if (currentQuestion < (nQuestions - 1)){
-            currentQuestion++;
-            initQuestion(questionList.get(currentQuestion));
-        }else{
-            Intent intent = new Intent(this, EndOfQuiz.class);
-            intent.putExtra("score", score);
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        currentQuestion = 0;
-        score = 0;
-        initQuestion(questionList.get(currentQuestion));
-    }
-    */
 }

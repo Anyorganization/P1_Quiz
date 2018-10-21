@@ -20,15 +20,15 @@
         android:id="@+id/text_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/label_question"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/label_question"
-        app:layout_constraintTop_toBottomOf="@+id/label_question"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/label_question" />
 
 
     <View
@@ -37,12 +37,14 @@
         android:layout_height="1dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="#813e3e3e"
+        app:layout_constraintBottom_toBottomOf="@+id/videoContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/text_question"
-        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintTop_toBottomOf="@+id/videoContainer"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -87,19 +89,34 @@
 
         />
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="304dp"
-        android:layout_height="169dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="384dp"
+        android:layout_height="216dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ruler"
+        app:layout_constraintBottom_toTopOf="@+id/ruler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintTop_toBottomOf="@+id/text_question">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+    </android.support.constraint.ConstraintLayout>
 
 
     <!-- <ImageView
