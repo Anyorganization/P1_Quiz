@@ -103,5 +103,7 @@ topic0_
     <string name="topic0">Cities</string>
     <string name="topic1">Games</string>
     <string name="topic2">PowerPuffGirls</string>
+    <string name="buttonPlayPause">Play/Pause</string>
+    <string name="buttonRestart">Restart</string>
 
 </resources>

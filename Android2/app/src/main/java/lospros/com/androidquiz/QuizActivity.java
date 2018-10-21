@@ -47,12 +47,16 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     //Variables:
     Button[] buttons;
     TextView text_question;
+    TextView label_question;
+    TextView label_hits;
     ImageView questionImg;
     ArrayList<Question> questionList;
     int currentQuestion =0;
     int cA;
 
     int score = 0;
+    int hits = 0;
+    int fails = 0;
     int nQuestions;
     String topoc;
 
@@ -81,8 +85,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
 
         //AUDIO TEST
-        MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
-
 
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
         nQuestions = nQ;
@@ -121,6 +123,14 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         buttons = new Button[]{(Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
         text_question = (TextView) findViewById(R.id.text_question);
         text_question.setText(getResources().getIdentifier(q.getQuestion(), "string", getPackageName()));
+
+        label_question = (TextView) findViewById(R.id.label_question);
+        label_question.setText(getString(R.string.question) + " " + (currentQuestion+1) + "/" + nQuestions);
+
+        label_hits = (TextView) findViewById(R.id.label_hits);
+        label_hits.setText(hits + "/" + fails);
+
+
 
         for (Button b : buttons){
             b.setBackgroundResource(android.R.drawable.btn_default);
@@ -180,10 +190,9 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
                 break;
 
             case "audio":
-                //TODO preguntas de audio.
+
                 Log.i("switch initQuestion: ","Pregunta de Audio");
-                currentQuestion++;
-                initQuestion(questionList.get(currentQuestion));
+                loadAudio("fff");
                 break;
 
 
@@ -199,6 +208,48 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         loadCommonStuff(q);
 
 
+
+
+    }
+
+
+
+    private void loadAudio(String name){
+        setContentView(R.layout.audio_layout);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
+        MediaController mc = new MediaController(this);
+        //mediaPlayer.start();
+
+        Button playPause = findViewById(R.id.buttonPlayPause);
+        playPause.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(mediaPlayer.isPlaying()){
+                    Log.i("audio","is Playing");
+                    mediaPlayer.pause();
+
+                }else{
+                    mediaPlayer.start();
+                    Log.i("audio","EEEEEEEEEEEEEEE");
+                }
+            }
+        }));
+
+        Button restart = findViewById(R.id.buttonRestart);
+        restart.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+            }
+        }));
+
+
+        /*mc.setAnchorView(audioView);
+        mc.setEnabled(true);
+        mc.show(10);
+        mediaPlayer.start();*/
 
 
     }
@@ -230,6 +281,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         if (aux == cA) {//Correct Answer!
             Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
+            hits++;
 
             //loadVideo("calico");
 
@@ -245,6 +297,8 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         } else {//Incorrecta
             Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
             score -= 2;
+            fails++;
+
             if (currentQuestion < (nQuestions - 1)){
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
@@ -255,5 +309,4 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
             }
         }
     }
-
 }

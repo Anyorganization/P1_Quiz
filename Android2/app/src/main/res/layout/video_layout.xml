@@ -40,11 +40,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="#813e3e3e"
-        app:layout_constraintBottom_toBottomOf="@+id/videoContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/audioContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/text_question"
-        app:layout_constraintTop_toBottomOf="@+id/videoContainer"
+        app:layout_constraintTop_toBottomOf="@+id/audioContainer"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -90,7 +90,7 @@
         />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/videoContainer"
+        android:id="@+id/audioContainer"
         android:layout_width="384dp"
         android:layout_height="216dp"
         android:layout_marginBottom="8dp"
@@ -116,7 +116,30 @@
             app:layout_constraintTop_toTopOf="parent"
 
             />
+
+
+
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/label_hits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/label_hits"
+        app:layout_constraintStart_toEndOf="@+id/label_question"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!-- <ImageView

@@ -80,5 +80,7 @@
     <string name="topic0">Ciudades</string>
     <string name="topic1">Juegos</string>
     <string name="topic2">Supernenas</string>
+    <string name="buttonPlayPause">Play/Pausa</string>
+    <string name="buttonRestart">Reiniciar</string>
 
 </resources>
