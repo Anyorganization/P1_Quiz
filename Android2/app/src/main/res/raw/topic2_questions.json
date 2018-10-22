@@ -1,0 +1,14 @@
+[
+
+{ "question" : "topic2_q000", "type" : "image", "path" : "john", "cA" : 2, "iA" : false, "ans" : [ "topic2_ans000_1", "topic2_ans000_2", "topic2_ans000_3", "topic2_ans000_4" ] },
+{ "question" : "topic2_q001", "type" : "text", "path" : "", "cA" : 0, "iA" : true, "ans" : [ "topic2_ans001_1", "topic2_ans001_2", "topic2_ans001_3", "topic2_ans001_4" ] },
+{ "question" : "topic2_q002", "type" : "image", "path" : "wolfgang", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans002_1", "topic2_ans002_2", "topic2_ans002_3", "topic2_ans002_4" ] },
+{ "question" : "topic2_q003", "type" : "text", "path" : "", "cA" : 3, "iA" : true, "ans" : [ "topic2_ans003_1", "topic2_ans003_2", "topic2_ans003_3", "topic2_ans003_4" ] },
+{ "question" : "topic2_q004", "type" : "image", "path" : "michael", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans004_1", "topic2_ans004_2", "topic2_ans004_3", "topic2_ans004_4" ] },
+{ "question" : "topic2_q005", "type" : "video", "path" : "office", "cA" : 3, "iA" : false, "ans" : [ "topic2_ans005_1", "topic2_ans005_2", "topic2_ans005_3", "topic2_ans005_4" ] },
+{ "question" : "topic2_q006", "type" : "video", "path" : "maggie", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans006_1", "topic2_ans006_2", "topic2_ans006_3", "topic2_ans006_4" ] },
+{ "question" : "topic2_q007", "type" : "audio", "path" : "donnatheme", "cA" : 0, "iA" : true, "ans" : [ "topic2_ans007_1", "topic2_ans007_2", "topic2_ans007_3", "topic2_ans007_4" ] },
+{ "question" : "topic2_q008", "type" : "audio", "path" : "sherlock", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans008_1", "topic2_ans008_2", "topic2_ans008_3", "topic2_ans008_4" ] },
+{ "question" : "topic2_q009", "type" : "audio", "path" : "parksandrec", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans009_1", "topic2_ans009_2", "topic2_ans009_3", "topic2_ans009_4" ] }
+
+]

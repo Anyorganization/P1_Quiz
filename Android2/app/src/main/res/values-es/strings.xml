@@ -69,6 +69,40 @@
     <string name="topic0_ans013_2">Lisboa</string>
     <string name="topic0_ans013_3">Southampton</string>
     <string name="topic0_ans013_4">Alejandría</string>
+
+
+
+    <!-- Preguntas videojuegos -->
+    <string name="topic1_q000">¿Cómo se llama la protagonista de Portal?</string>
+    <string name="topic1_q001">¿Qué juego fue hecho por Nintendo?</string>
+    <string name="topic1_q002">¿Quién dirigió Metal Gear Solid?</string>
+    <string name="topic1_q003">¿Cuál de estos personajes pertenece a Sega?</string>
+    <string name="topic1_q004">¿De qué juego es este personaje?</string>
+    <string name="topic1_q005">¿De qué juego es esta escena?</string>
+    <string name="topic1_q006">¿De qué juego es esta escena?</string>
+    <string name="topic1_q007">¿De qué juego es esta canción?</string>
+    <string name="topic1_q008">¿Qué imagen se corresponde con la canción?</string>
+    <string name="topic1_q009">¿Quién compuso esta canción?</string>
+
+
+
+
+    <!-- Preguntas series -->
+    <string name="topic2_q000">¿Quién interpreta a John Watson en Sherlock de BBC?</string>
+    <string name="topic2_q001">¿Quién aparece en The Walking Dead?</string>
+    <string name="topic2_q002">¿Cómo se llama este personaje de Sense8?</string>
+    <string name="topic2_q003">¿Qué personaje de Doctor Who es humano?</string>
+    <string name="topic2_q004">¿Quién interpreta a Michael Scott en The Office?</string>
+    <string name="topic2_q005">¿De qué serie es esta escena?</string>
+    <string name="topic2_q006">¿Quién es este personaje de The Walking Dead?</string>
+    <string name="topic2_q007">¿Para qué personaje de Doctor Who fue compuesto este tema?</string>
+    <string name="topic2_q008">¿De qué serie es esta canción?</string>
+    <string name="topic2_q009">¿De qué serie es esta canción?</string>
+
+
+
+
+
     <string name="title_activity_settings">Configuración</string>
     <string name="nQuestions">Número de preguntas</string>
     <string name="largeText">Fuente grande</string>
@@ -79,7 +113,7 @@
     <string name="topic_title">Temática</string>
     <string name="topic0">Ciudades</string>
     <string name="topic1">Juegos</string>
-    <string name="topic2">Supernenas</string>
+    <string name="topic2">Series</string>
     <string name="buttonPlayPause">Play/Pausa</string>
     <string name="buttonRestart">Reiniciar</string>
 

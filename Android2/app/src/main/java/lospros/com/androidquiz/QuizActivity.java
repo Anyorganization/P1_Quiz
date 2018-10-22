@@ -1,17 +1,10 @@
 package lospros.com.androidquiz;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
-import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -28,15 +19,10 @@ import android.widget.VideoView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
-
 
 
 // Change layout: setContentView(R.layout.video_layout);
@@ -58,8 +44,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     int hits = 0;
     int fails = 0;
     int nQuestions;
-    String topoc;
-
+    MediaPlayer mediaPlayer;
 
 
     private int ids_answers[] = {
@@ -75,7 +60,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-    //Select Theme
+        //Select Theme
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
         if(darkTheme){
             super.setTheme(R.style.DarkTheme);
@@ -86,20 +71,45 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         //AUDIO TEST
 
+
+
         int nQ = Integer.parseInt(sharedPreferences.getString("N_QUESTIONS", "5"));
         nQuestions = nQ;
         Log.i("darkTheme", darkTheme.toString());
         Log.i("nQuestions", Integer.toString(nQ));
 
-        topoc = sharedPreferences.getString("TOPIC","topic0");
+
+
 
         ////
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+
+        questionList = new Gson().fromJson(questionsFile(sharedPreferences), new TypeToken<ArrayList<Question>>(){}.getType());
+        Collections.shuffle(questionList);
+
+        initQuestion(questionList.get(currentQuestion));
+    }
+
+    private String questionsFile(SharedPreferences sharedPreferences ){
+        String topoc = sharedPreferences.getString("TOPIC","topic0");
+        InputStream is;
         ///Reading JSON.
-        InputStream is = getResources().openRawResource(R.raw.questions);
+        int id =getResources().getIdentifier(topoc+"_questions", "raw", getPackageName());
+
+        if(id!=0){
+            is = getResources().openRawResource(id);
+        }else{
+            Log.i("Error reading "+topoc+"_questions.json: ","Trying to read "+topoc);
+            is = getResources().openRawResource(R.raw.topic0_questions);
+        }
+
+
+
+
+
         String dataFile = "";
         try {
             int size = is.available();
@@ -111,12 +121,10 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
             e.printStackTrace();
         }
 
-        questionList = new Gson().fromJson(dataFile, new TypeToken<ArrayList<Question>>(){}.getType());
-        Collections.shuffle(questionList);
 
-        initQuestion(questionList.get(currentQuestion));
+        return dataFile;
+
     }
-
     private void loadCommonStuff(Question q){
 
         //BUTTONS:
@@ -148,7 +156,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         //Correct Answer id
         cA = q.getcA();
 
-        //image or text questions.
+        //image or text topic0_questions.
         if(q.isiA()) {
             for (int i = 0; i < buttons.length; i++) {
                 String nameImg = getString(getResources().getIdentifier(q.getAns()[i], "string", getPackageName()));
@@ -192,7 +200,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
             case "audio":
 
                 Log.i("switch initQuestion: ","Pregunta de Audio");
-                loadAudio("fff");
+                loadAudio(q.getPath());
                 break;
 
 
@@ -216,7 +224,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
     private void loadAudio(String name){
         setContentView(R.layout.audio_layout);
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.tomandjerry);
+        mediaPlayer = MediaPlayer.create(this,getResources().getIdentifier(name, "raw", getPackageName()));
         MediaController mc = new MediaController(this);
         //mediaPlayer.start();
 
@@ -226,12 +234,12 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
             public void onClick(View v) {
 
                 if(mediaPlayer.isPlaying()){
-                    Log.i("audio","is Playing");
+                    Log.i("audio","Pause");
                     mediaPlayer.pause();
 
                 }else{
                     mediaPlayer.start();
-                    Log.i("audio","EEEEEEEEEEEEEEE");
+                    Log.i("audio","Play");
                 }
             }
         }));
@@ -259,7 +267,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         VideoView videoView = findViewById(R.id.videoView);
 
-        Log.i("id Video",Integer.toString(getResources().getIdentifier("calico","raw",getPackageName())) );
         String videoFile = "android.resource://"+getPackageName()+"/"+ getResources().getIdentifier(name,"raw",getPackageName());//R.raw.calico; //
 
 
@@ -278,12 +285,15 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     }
 
     private void checkQuestion(int aux){
+        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
+        }
+
         if (aux == cA) {//Correct Answer!
             Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score += 3;
             hits++;
 
-            //loadVideo("calico");
 
             if (currentQuestion < (nQuestions - 1)) {//Si no es la última
                 currentQuestion++;
