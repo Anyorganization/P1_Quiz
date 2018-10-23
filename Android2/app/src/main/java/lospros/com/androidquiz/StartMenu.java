@@ -13,14 +13,20 @@ public class StartMenu extends AppCompatActivity {
 
     private Button startButton;
     private Button settingsButton;
+    private Button scoresButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_start_menu);
 
         startButton = (Button) findViewById(R.id.btn_start);
+
         settingsButton = (Button)findViewById(R.id.btn_settings);
+
+        scoresButton = (Button) findViewById(R.id.btn_scores);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +42,17 @@ public class StartMenu extends AppCompatActivity {
             }
         });
 
+        scoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRecordsActivity();
+            }
+        });
 
+    }
+
+    private void openRecordsActivity() {
+        startActivity(new Intent(this,ScoresActivity.class));
     }
 
     @Override

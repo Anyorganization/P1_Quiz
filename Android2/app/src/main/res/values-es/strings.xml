@@ -116,5 +116,8 @@
     <string name="topic2">Series</string>
     <string name="buttonPlayPause">Play/Pausa</string>
     <string name="buttonRestart">Reiniciar</string>
+    <string name="text_scores_button">Récords</string>
+    <string name="name_title">Jugador</string>
+    <string name="score_title">Puntuación</string>
 
 </resources>
