@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,21 +37,48 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     TextView text_question;
     TextView label_question;
     TextView label_hits;
+    TextView label_time;
     ImageView questionImg;
     ArrayList<Question> questionList;
     int currentQuestion =0;
     int cA;
-
+    private int ids_answers[] = {
+            R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4
+    };
     int score = 0;
     int hits = 0;
     int fails = 0;
     int nQuestions;
     MediaPlayer mediaPlayer;
 
+    long startTime = 0L, timeInMil = 0L;
+    Handler customHandler = new Handler();
 
-    private int ids_answers[] = {
-            R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4
+
+
+
+
+
+
+    Runnable updateStopwatch = new Runnable() {
+        @Override
+        public void run() {
+            timeInMil = SystemClock.uptimeMillis()-startTime;
+            int secs = (int) (timeInMil/1000);
+            int min = secs/60;
+            secs%=60;
+            if(secs<10){
+                label_time.setText(min+":0"+secs);
+            }else{
+
+                label_time.setText(min+":"+secs);
+            }
+            Log.i("cronómetro: ", Integer.toString(secs));
+
+            customHandler.postDelayed(this,1000);
+        }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +108,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         Log.i("nQuestions", Integer.toString(nQ));
 
 
-
-
         ////
 
         super.onCreate(savedInstanceState);
@@ -91,6 +118,11 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         Collections.shuffle(questionList);
 
         initQuestion(questionList.get(currentQuestion));
+
+
+        //Se inicia el cronómetro:
+        startTime = SystemClock.uptimeMillis();
+
     }
 
     private String questionsFile(SharedPreferences sharedPreferences ){
@@ -105,10 +137,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
             Log.i("Error reading "+topoc+"_questions.json: ","Trying to read "+topoc);
             is = getResources().openRawResource(R.raw.topic0_questions);
         }
-
-
-
-
 
         String dataFile = "";
         try {
@@ -127,6 +155,11 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     }
     private void loadCommonStuff(Question q){
 
+
+        label_time = findViewById(R.id.label_time);
+
+        customHandler.removeCallbacks(updateStopwatch);
+        customHandler.postDelayed(updateStopwatch, 0);
         //BUTTONS:
         buttons = new Button[]{(Button) findViewById(R.id.answer1), (Button) findViewById(R.id.answer2), (Button) findViewById(R.id.answer3), (Button) findViewById(R.id.answer4)};
         text_question = (TextView) findViewById(R.id.text_question);
@@ -137,6 +170,8 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
         label_hits = (TextView) findViewById(R.id.label_hits);
         label_hits.setText(hits + "/" + fails);
+
+
 
 
 
@@ -177,7 +212,6 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
 
 
     private void initQuestion(Question q){
-
         String type = q.getType();
 
         switch (type){
@@ -318,5 +352,13 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
                 startActivity(intent);
             }
         }
+    }
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+
+        customHandler.removeCallbacks(updateStopwatch);
+
+
     }
 }

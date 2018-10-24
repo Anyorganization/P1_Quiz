@@ -106,7 +106,7 @@
 
 
     <!-- Preguntas videojuegos -->
-    <string name="topic1_q000">What`s the name of Portal`s protagonist?</string>
+    <string name="topic1_q000">What\'s the name of Portal\'s protagonist?</string>
     <string name="topic1_q001">Which of these games was made by Nintendo?</string>
     <string name="topic1_q002">Who is the director of Metal Gear Solid?</string>
     <string name="topic1_q003">Which of these characters belongs to Sega?</string>
@@ -148,7 +148,7 @@
     <string name="topic1_ans005_3" translatable="false">Super Mario Sunshine</string>
     <string name="topic1_ans005_4" translatable="false">Super Mario Galaxy</string>
 
-    <string name="topic1_ans006_1" translatable="false">The Lion`s Song</string>
+    <string name="topic1_ans006_1" translatable="false">The Lion\'s Song</string>
     <string name="topic1_ans006_2" translatable="false">Braid</string>
     <string name="topic1_ans006_3" translatable="false">Pony Island</string>
     <string name="topic1_ans006_4" translatable="false">The Witness</string>
@@ -170,9 +170,9 @@
 
 
     <!-- Preguntas series -->
-    <string name="topic2_q000">Who plays John Watson in BBC`s Sherlock?</string>
+    <string name="topic2_q000">Who plays John Watson in BBC\'s Sherlock?</string>
     <string name="topic2_q001">Who appears in The Walking Dead?</string>
-    <string name="topic2_q002">What is this Sense8 character`s name?</string>
+    <string name="topic2_q002">What is this Sense8 character\'s name?</string>
     <string name="topic2_q003">Which Doctor Who character is human?</string>
     <string name="topic2_q004">Who plays Michael Scott in The Office?</string>
     <string name="topic2_q005">What show is this scene from?</string>

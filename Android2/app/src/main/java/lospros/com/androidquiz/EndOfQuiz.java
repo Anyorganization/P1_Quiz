@@ -10,18 +10,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-        public class EndOfQuiz extends AppCompatActivity {
+public class EndOfQuiz extends AppCompatActivity {
 
-            @Override
-            protected void onCreate(Bundle savedInstanceState) {
-                super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_end_of_quiz);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
 
-                Bundle bundle = getIntent().getExtras();
-                int value = bundle.getInt("score");
 
-                TextView score = (TextView) findViewById(R.id.scoreText);
-                score.setText(Integer.toString(value));
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            super.setTheme(R.style.DarkTheme);
+        }else{
+            super.setTheme(R.style.LightTheme);
+        }
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_end_of_quiz);
+
+        Bundle bundle = getIntent().getExtras();
+        int value = bundle.getInt("score");
+
+        TextView score = (TextView) findViewById(R.id.scoreText);
+        score.setText(Integer.toString(value));
+
+        new RecordsManager().updateRecords("Manolo",value,getApplicationContext());
 
         Button playAgain = (Button) findViewById(R.id.restartButton);
 
@@ -32,13 +44,7 @@ import android.widget.TextView;
             }
         });
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
-        if(darkTheme){
-            super.setTheme(R.style.DarkTheme);
-        }else{
-            super.setTheme(R.style.LightTheme);
-        }
+
 
     }
 

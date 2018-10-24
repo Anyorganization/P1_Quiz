@@ -18,6 +18,15 @@ public class StartMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            getApplication().setTheme(R.style.DarkTheme);
+        }else{
+            getApplication().setTheme(R.style.LightTheme);
+        }
+
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_start_menu);
@@ -55,17 +64,7 @@ public class StartMenu extends AppCompatActivity {
         startActivity(new Intent(this,ScoresActivity.class));
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
-        if(darkTheme){
-            getApplication().setTheme(R.style.DarkTheme);
-        }else{
-            getApplication().setTheme(R.style.LightTheme);
-        }
-    }
+
 
     public void openQuizActivity(){
         Intent intent = new Intent(this, QuizActivity.class);
