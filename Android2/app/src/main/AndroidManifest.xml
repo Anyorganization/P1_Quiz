@@ -29,7 +29,9 @@
         <activity
             android:name=".EndOfQuiz"
             android:theme="@style/LightTheme" />
-        <activity android:name=".ScoresActivity"></activity>
+        <activity android:name=".ScoresActivity" />
+        <activity android:name=".ProfilesMenu" />
+        <activity android:name=".CreateProfileActivity"></activity>
     </application>
 
 </manifest>

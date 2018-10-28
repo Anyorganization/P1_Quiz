@@ -251,11 +251,10 @@
     <string name="buttonRestart">Restart</string>
 
 
-
     <string name="title_activity_scores">ScoresActivity</string>
     <string name="name_title">Player</string>
     <string name="score_title">Score</string>
-
+    <string name="text_profiles_button">Profiles</string>
 
 
 </resources>

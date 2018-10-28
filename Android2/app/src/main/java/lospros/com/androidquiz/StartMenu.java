@@ -14,6 +14,7 @@ public class StartMenu extends AppCompatActivity {
     private Button startButton;
     private Button settingsButton;
     private Button scoresButton;
+    private Button profilesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class StartMenu extends AppCompatActivity {
 
         scoresButton = (Button) findViewById(R.id.btn_scores);
 
+        profilesButton = (Button) findViewById(R.id.btn_Profiles);
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,23 +61,22 @@ public class StartMenu extends AppCompatActivity {
             }
         });
 
+        profilesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProfilesActivity();
+            }
+        });
+
+
     }
 
     private void openRecordsActivity() {
         startActivity(new Intent(this,ScoresActivity.class));
     }
-
-
-
-    public void openQuizActivity(){
-        Intent intent = new Intent(this, QuizActivity.class);
-        startActivity(intent);
-    }
-
-    public void openSettingsActivity(){
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
+    public void openQuizActivity(){ startActivity(new Intent(this, QuizActivity.class)); }
+    public void openSettingsActivity(){startActivity(new Intent(this, SettingsActivity.class)); }
+    public void openProfilesActivity(){ startActivity(new Intent(this, ProfilesMenu.class));}
 
     @Override
     public void onBackPressed() {}
