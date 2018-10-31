@@ -10,12 +10,10 @@ import lospros.com.androidquiz.utilidades.Utilidades;
 public class SQLiteManager extends SQLiteOpenHelper {
 
 
-
-
     public SQLiteManager(Context context,String name,SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
 
-
+        //TODO
 
     }
 
@@ -26,7 +24,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS perfiles");
+        db.execSQL("DROP TABLE IF EXISTS " + Utilidades.TABLA_PERFIL);
         onCreate(db);
     }
 }

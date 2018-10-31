@@ -13,6 +13,9 @@ public class Perfil {
     //https://stackoverflow.com/questions/7363112/best-way-to-work-with-dates-in-android-sqlite
     private Date fecha;
 
+    public Perfil(){
+
+    }
 
     public Perfil(Integer id, String nombre, String fotoPath) {
         this.id = id;
@@ -64,7 +67,7 @@ public class Perfil {
     }
 
     public Date getFecha() {
-        if(fecha==null){
+        if(fecha == null){
             return null;
         }
         return fecha;

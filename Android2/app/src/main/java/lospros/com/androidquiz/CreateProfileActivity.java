@@ -35,8 +35,8 @@ public class CreateProfileActivity extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //createProfile();
-                createProfileSQL();
+            //createProfile();
+            createProfileSQL();
             }
         });
 
@@ -47,25 +47,27 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         SQLiteDatabase db = conn.getWritableDatabase();
 
-
-
+        //INSERT INTO perfiles (id, nombre, fotopath, maxpunt, npartidas) VALUES (123, 'Pepe', 'IMG_0000.jpg', 25, 4)
         String insert="INSERT INTO "+Utilidades.TABLA_PERFIL
                 +" ("
                 +Utilidades.CAMPO_ID + ","
                 +Utilidades.CAMPO_NOMBRE+ ","
-                +Utilidades.CAMPO_FOTOPATH
+                +Utilidades.CAMPO_FOTOPATH+ ","
+                +Utilidades.CAMPO_MAXPUNT+ ","
+                +Utilidades.CAMPO_NPARTIDAS
                 +")"
                 +" VALUES ("
                 +campoId.getText().toString()+","
                 +"'"+campoNombre.getText().toString()+"',"
-                +"'"+campoFotoPath.getText().toString()+"'"
+                +"'"+campoFotoPath.getText().toString()+"',"
+                +0+","
+                +0
+                //La puntuación máxima y número de partidas jugadas se ponen a 0 al principio
 
 
 
 
-
-                +")"
-                ;
+                +")";
 
         Log.i("sentencia SQL", insert);
 
@@ -74,7 +76,9 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     }
 
-    private void createProfile() {
+
+    //TODO Esta función es antigua
+    /*private void createProfile() {
         SQLiteManager conn = new SQLiteManager(this,"bd_perfiles",null,1);
 
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -89,5 +93,5 @@ public class CreateProfileActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"id Registro:"+ idResultante, Toast.LENGTH_LONG).show();
 
         db.close();
-    }
+    }*/
 }
