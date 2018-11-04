@@ -28,6 +28,7 @@ public class ProfilesMenu extends AppCompatActivity {
     ArrayList<Perfil> profileList;
 
     SQLiteManager conn;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,9 @@ public class ProfilesMenu extends AppCompatActivity {
 
         conn = new SQLiteManager(getApplicationContext(), "bd_perfiles", null, 1);
 
+        db = conn.getWritableDatabase();
+
         getProfileList();
-        infoList.add("AAA"); //borrar
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, infoList);
         listView.setAdapter(adapter);
@@ -61,7 +63,6 @@ public class ProfilesMenu extends AppCompatActivity {
     }
 
     private void getProfileList(){
-        SQLiteDatabase db = conn.getReadableDatabase();
         Perfil p = null;
         profileList = new ArrayList<Perfil>();
 
