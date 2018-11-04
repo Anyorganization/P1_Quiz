@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,8 +49,9 @@ public class ProfilesMenu extends AppCompatActivity {
         conn = new SQLiteManager(getApplicationContext(), "bd_perfiles", null, 1);
 
         getProfileList();
+        infoList.add("AAA"); //borrar
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_profiles_menu, infoList);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, infoList);
         listView.setAdapter(adapter);
 
     }
@@ -68,19 +70,20 @@ public class ProfilesMenu extends AppCompatActivity {
 
         while (cursor.moveToNext()) {
             p = new Perfil();
-            p.setId(cursor.getInt(0));
-            p.setNombre(cursor.getString(1));
-            p.setFotoPath(cursor.getString(2));
-            p.setFecha(Date.valueOf(String.valueOf(new Date(Calendar.getInstance().getTime().getTime()))));
+            p.setNombre(cursor.getString(0));
+            p.setFotoPath(cursor.getString(1));
+            p.setFecha(new Date(cursor.getLong(2))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
             p.setMaxPunt(cursor.getInt(3));
             p.setnPartidas(cursor.getInt(4));
+
+            profileList.add(p);
         }
         writeInfoList();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"Ey", Toast.LENGTH_SHORT);
+                Toast.makeText(ProfilesMenu.this,"Ey", Toast.LENGTH_SHORT).show();
             }
         });
     }

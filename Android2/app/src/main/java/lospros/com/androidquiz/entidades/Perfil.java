@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Perfil {
 
-    private Integer id;
     private String nombre;
     private String fotoPath;
     private Integer maxPunt;
@@ -17,21 +16,12 @@ public class Perfil {
 
     }
 
-    public Perfil(Integer id, String nombre, String fotoPath) {
-        this.id = id;
+    public Perfil(String nombre, String fotoPath) {
         this.nombre = nombre;
         this.fotoPath = fotoPath;
         maxPunt =0;
         nPartidas=0;
 
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNombre() {
