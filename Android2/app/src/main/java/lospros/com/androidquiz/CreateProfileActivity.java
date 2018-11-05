@@ -1,5 +1,6 @@
 package lospros.com.androidquiz;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -8,10 +9,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,54 +35,130 @@ public class CreateProfileActivity extends AppCompatActivity {
     Button btn_camera;
     ImageView img_profile;
 
-    String fotoPath= "";
+    ImageView img_1, img_2, img_3, img_4;
+
+    String fotoPath = "";
     Boolean hasCam;
 
 
-
-
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_profile);
+
+
+        hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        if (false) {//hasCam){
+            setContentView(R.layout.activity_create_profile);
+
+            btn_camera = (Button) findViewById(R.id.btn_camera);
+            img_profile = (ImageView) findViewById(R.id.img_profile);
+
+            btn_camera.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 0);
+
+
+                }
+            });
+
+
+        } else {
+            setContentView(R.layout.activity_create_profile_withoutcam);
+
+            img_1 = (ImageView) findViewById(R.id.img_1);
+            img_2 = (ImageView) findViewById(R.id.img_2);
+            img_3 = (ImageView) findViewById(R.id.img_3);
+            img_4 = (ImageView) findViewById(R.id.img_4);
+
+            hasCam=false; //TODO quitar esta linea joder.
+
+
+            img_1.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        img_1.setColorFilter(Color.argb(50,0,0,0));
+
+
+                        img_2.setColorFilter(Color.argb(0,0,0,0));
+                        img_3.setColorFilter(Color.argb(0,0,0,0));
+                        img_4.setColorFilter(Color.argb(0,0,0,0));
+                        fotoPath = "default1";
+                    }
+                    return false;
+                }
+            });
+            img_2.setOnTouchListener(new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        img_2.setColorFilter(Color.argb(50,0,0,0));
+
+                        img_1.setColorFilter(Color.argb(0,0,0,0));
+                        img_3.setColorFilter(Color.argb(0,0,0,0));
+                        img_4.setColorFilter(Color.argb(0,0,0,0));
+                        fotoPath = "default2";
+                    }
+                    return false;
+                }
+            });
+            img_3.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        img_3.setColorFilter(Color.argb(50,0,0,0));
+
+                        img_1.setColorFilter(Color.argb(0,0,0,0));
+                        img_2.setColorFilter(Color.argb(0,0,0,0));
+                        img_4.setColorFilter(Color.argb(0,0,0,0));
+                        fotoPath = "default3";
+                    }
+                    return false;
+                }
+            });
+            img_4.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        img_4.setColorFilter(Color.argb(50,0,0,0));
+
+                        img_1.setColorFilter(Color.argb(0,0,0,0));
+                        img_2.setColorFilter(Color.argb(0,0,0,0));
+                        img_3.setColorFilter(Color.argb(0,0,0,0));
+                        fotoPath = "default4";
+                    }
+                    return false;
+                }
+            });
+
+
+        }
 
 
         campoNombre = (EditText) findViewById(R.id.editText_name);
         btn_submit = (Button) findViewById(R.id.btn_submit);
-        btn_camera = (Button) findViewById(R.id.btn_camera);
-        img_profile = (ImageView) findViewById(R.id.img_profile);
 
-        btn_camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PackageManager pm = getApplicationContext().getPackageManager();
-
-                hasCam = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
-                if (hasCam) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent,0);
-                }else{
-                    //TODO hacer la actividad para seleccionar imagen default.
-                }
-
-            }
-        });
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //createProfile();
-            createProfileSQL();
+                //createProfile();
+                createProfileSQL();
             }
         });
 
     }
 
     private void createProfileSQL() {
-        SQLiteManager conn = new SQLiteManager(this,"bd_perfiles",null,1);
+        SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
 
         SQLiteDatabase db = conn.getWritableDatabase();
-
 
 
         ///////
@@ -87,59 +167,56 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         //cursor = your-query-here
 
-        if(cursor.getCount() < 1){
+        if (cursor.getCount() < 1) {
+            int myInt = hasCam ? 1 : 0;
             //INSERT INTO perfiles (nombre, fotopath, maxpunt, npartidas, dirimage) VALUES ('Pepe', 'IMG_0000.jpg', 25, 4, 0)
-            String insert="INSERT INTO "+Utilidades.TABLA_PERFIL
-                    +" ("
-                    +Utilidades.CAMPO_NOMBRE+ ","
-                    +Utilidades.CAMPO_FOTOPATH+ ","
-                    +Utilidades.CAMPO_FECHA+ ","
-                    +Utilidades.CAMPO_MAXPUNT+ ","
-                    +Utilidades.CAMPO_NPARTIDAS + ","
-                    +Utilidades.CAMPO_DIRIMAGE
-                    +")"
-                    +" VALUES ("
-                    +"'"+campoNombre.getText().toString()+"',"
-                    +"fotoPath,"
-                    + System.currentTimeMillis() +","
-                    +0+","
-                    +0+","
-                    +hasCam
+            String insert = "INSERT INTO " + Utilidades.TABLA_PERFIL
+                    + " ("
+                    + Utilidades.CAMPO_NOMBRE + ","
+                    + Utilidades.CAMPO_FOTOPATH + ","
+                    + Utilidades.CAMPO_FECHA + ","
+                    + Utilidades.CAMPO_MAXPUNT + ","
+                    + Utilidades.CAMPO_NPARTIDAS + ","
+                    + Utilidades.CAMPO_DIRIMAGE
+                    + ")"
+                    + " VALUES ("
+                    + "'" + campoNombre.getText().toString() + "',"
+                    + "'" + fotoPath + "',"
+                    + System.currentTimeMillis() + ","
+                    + 0 + ","
+                    + 0 + ","
+                    + myInt
                     //La puntuación máxima y número de partidas jugadas se ponen a 0 al principio
 
 
-
-
-                    +")";
+                    + ")";
 
             Log.i("sentencia SQL", insert);
 
             db.execSQL(insert);
             db.close();
-        }else{
-            Toast.makeText(CreateProfileActivity.this,"Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
+        } else {
+            Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
         }
         //////
-
-
 
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
         img_profile.setImageBitmap(bitmap);
         try {
-            FileOutputStream out = openFileOutput("IMG_" + System.currentTimeMillis()+".jpg", Context.MODE_PRIVATE);
+            fotoPath = "IMG_" + System.currentTimeMillis() + ".jpg";
+            FileOutputStream out = openFileOutput(fotoPath, Context.MODE_PRIVATE);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
             out.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
     //TODO Esta función es antigua
