@@ -1,7 +1,11 @@
 package lospros.com.androidquiz;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -13,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import lospros.com.androidquiz.utilidades.Utilidades;
 
 public class RecordsManager {
     private ArrayList<Integer> records;
@@ -57,6 +63,25 @@ public class RecordsManager {
             e.printStackTrace();
         }
 
+
+
+        ///
+        SQLiteManager conn = new SQLiteManager(ctx, "bd_perfiles", null, 1);
+        SQLiteDatabase db = conn.getWritableDatabase();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL + " WHERE " + Utilidades.CAMPO_NOMBRE + " = "+ "'"+name+"'", null);
+        cursor.moveToFirst();
+        int oldScore = cursor.getInt(3);
+        int nPartidas = cursor.getInt(4);
+        ContentValues newValues = new ContentValues();
+        newValues.put(Utilidades.CAMPO_FECHA, System.currentTimeMillis());
+        newValues.put(Utilidades.CAMPO_MAXPUNT, (int) Math.max(score, oldScore));
+        newValues.put(Utilidades.CAMPO_NPARTIDAS, (nPartidas + 1));
+
+        db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+name+"'", null);
+
+        Toast.makeText(ctx, "nPartidas es "+ nPartidas, Toast.LENGTH_SHORT).show();
 
     }
 

@@ -84,6 +84,17 @@
     <string name="topic1_q008">¿Qué imagen se corresponde con la canción?</string>
     <string name="topic1_q009">¿Quién compuso esta canción?</string>
 
+    <string name="topic1_q010">¿Cuál no es una campaña en Age of Empires II?</string>
+    <string name="topic1_q011">¿Qué suena?</string>
+    <string name="topic1_q012">¿En que saga hay zombies?</string>
+    <string name="topic1_q013">¿Qué animal es Sonic?</string>
+    <string name="topic1_q014">¿Qué Assasins Creed es este?</string>
+    <string name="topic1_q015">¿Qué personaje es?</string>
+    <string name="topic1_q016">¿De qué tipo es este personaje?</string>
+    <string name="topic1_q017">¿De qué juego es esta canción?</string>
+    <string name="topic1_q018">¿Cómo se llama este juego?</string>
+    <string name="topic1_q019">¿En que juego te puedes teletransportar?</string>
+
 
 
 
@@ -99,6 +110,16 @@
     <string name="topic2_q008">¿De qué serie es esta canción?</string>
     <string name="topic2_q009">¿De qué serie es esta canción?</string>
 
+    <string name="topic2_q010">¿De qué serie es esta canción?</string>
+    <string name="topic2_q011">¿De qué serie es esta canción?</string>
+    <string name="topic2_q012">¿De qué serie es esta escena?</string>
+    <string name="topic2_q013">¿Cómo se llama esta chica?</string>
+    <string name="topic2_q014">¿Qué es?</string>
+    <string name="topic2_q015">¿Qué serie es?</string>
+    <string name="topic2_q016">¿En que serie cambian de cuerpo?</string>
+    <string name="topic2_q017">¿En que serie se tatúan unos planos?</string>
+    <string name="topic2_q018">¿Cúantos hij@s tiene Ned Stark?</string>
+    <string name="topic2_q019">¿Quién no aparece en la lista de Arya Stark?</string>
 
 
 
@@ -119,5 +140,20 @@
     <string name="text_scores_button">Récords</string>
     <string name="name_title">Jugador</string>
     <string name="score_title">Puntuación</string>
+    <string name="text_profiles_button">Perfiles</string>
+    <string name="title_activity_scores">ActividadScores</string>
+    <string name="topic2_ans014_4">Ratón</string>
+    <string name="topic2_ans014_3">Demonio</string>
+    <string name="topic2_ans014_2">Perro</string>
+    <string name="topic2_ans014_1">Gato</string>
+    <string name="topic2_ans012_2">Bob Esponja</string>
+    <string name="topic1_ans013_1">Zorro</string>
+    <string name="topic1_ans013_2">Erizo</string>
+    <string name="topic1_ans013_3">Conejo</string>
+    <string name="topic1_ans013_4">Tortuga</string>
+    <string name="topic1_ans016_1">Tanque</string>
+    <string name="topic1_ans016_3">Moco</string>
+    <string name="topic1_ans016_4">Agua</string>
+    <string name="anonymous">Anónimo</string>
 
 </resources>

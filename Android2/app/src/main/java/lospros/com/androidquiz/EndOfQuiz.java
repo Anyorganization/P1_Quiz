@@ -18,6 +18,7 @@ public class EndOfQuiz extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        String namePlayer = sharedPreferences.getString("NAME_PLAYER","anom");
         if(darkTheme){
             super.setTheme(R.style.DarkTheme);
         }else{
@@ -32,8 +33,10 @@ public class EndOfQuiz extends AppCompatActivity {
 
         TextView score = (TextView) findViewById(R.id.scoreText);
         score.setText(Integer.toString(value));
+        if(!namePlayer.equals("anom")){
 
-        new RecordsManager().updateRecords("Manolo",value,getApplicationContext());
+            new RecordsManager().updateRecords(namePlayer,value,getApplicationContext());
+        }
 
         Button playAgain = (Button) findViewById(R.id.restartButton);
 

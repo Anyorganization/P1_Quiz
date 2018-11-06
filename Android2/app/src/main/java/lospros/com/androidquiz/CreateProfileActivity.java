@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +51,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
 
         hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-        if (false) {//hasCam){
+        if (false) {//TODO hasCam){
             setContentView(R.layout.activity_create_profile);
 
             btn_camera = (Button) findViewById(R.id.btn_camera);
@@ -182,7 +184,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                     + " VALUES ("
                     + "'" + campoNombre.getText().toString() + "',"
                     + "'" + fotoPath + "',"
-                    + System.currentTimeMillis() + ","
+                    + null + ","
                     + 0 + ","
                     + 0 + ","
                     + myInt
@@ -195,6 +197,12 @@ public class CreateProfileActivity extends AppCompatActivity {
 
             db.execSQL(insert);
             db.close();
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("NAME_PLAYER",campoNombre.getText().toString());
+            editor.commit();
+
         } else {
             Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
         }

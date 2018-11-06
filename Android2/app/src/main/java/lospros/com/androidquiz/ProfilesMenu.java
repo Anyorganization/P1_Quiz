@@ -1,8 +1,10 @@
 package lospros.com.androidquiz;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,7 +86,13 @@ public class ProfilesMenu extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ProfilesMenu.this,"Ey", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("NAME_PLAYER",profileList.get(position).getNombre());
+                editor.commit();
+                Toast.makeText(ProfilesMenu.this,"Ey " + profileList.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -93,7 +101,7 @@ public class ProfilesMenu extends AppCompatActivity {
         infoList = new ArrayList<String>();
 
         for(int i = 0; i < profileList.size(); i++){
-            infoList.add(profileList.get(i).getNombre() + " - " + profileList.get(i).getFotoPath());
+            infoList.add(profileList.get(i).getNombre() + " - " + profileList.get(i).getFotoPath()+ " - Fecha: "+ profileList.get(i).getFecha() +  " - nPartidas: "+ profileList.get(i).getnPartidas() + " - maxPunt: "+ profileList.get(i).getMaxPunt());
             //TODO añadir todos los campos con formato correcto
         }
     }

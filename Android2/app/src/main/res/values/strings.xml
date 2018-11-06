@@ -10,6 +10,7 @@
     <string name="incorrect">Wrong...</string>
     <string name="app_name">Quiz</string>
     <string name="question">Question</string>
+    <string name="anonymous">Anonymous</string>
 
     <!-- Preguntas -->
     <string name="topic0_q000">Where is Oslo?</string>
@@ -27,6 +28,7 @@
     <string name="topic0_q012">Where did the Olympic Games take place in 2008?</string>
     <string name="topic0_q013">Where did the Titanic sail from?</string>
     <string name="topic0_q014">Which picture is Cairo?</string>
+
 
     <!-- Respuestas -->
     <string name="topic0_ans000_1">Finland</string>
@@ -117,6 +119,17 @@
     <string name="topic1_q008">What picture matches the song?</string>
     <string name="topic1_q009">Who composed this song?</string>
 
+    <string name="topic1_q010">What is not a campaign in Age of Empires II?</string>
+    <string name="topic1_q011">What sounds?</string>
+    <string name="topic1_q012">In what saga there are zombies?</string>
+    <string name="topic1_q013">Which animal is Sonic?</string>
+    <string name="topic1_q014">Which Assasins Creed is this?</string>
+    <string name="topic1_q015">Which character is this?</string>
+    <string name="topic1_q016">What kind is this character?</string>
+    <string name="topic1_q017">What game is this song?</string>
+    <string name="topic1_q018">Wha\'s the name of this game?</string>
+    <string name="topic1_q019">In what game can you teleport?</string>
+
     <!-- Respuestas videojuegos -->
     <string name="topic1_ans000_1" translatable="false">Caroline</string>
     <string name="topic1_ans000_2" translatable="false">Elise</string>
@@ -168,6 +181,56 @@
     <string name="topic1_ans009_3" translatable="false">Shiho Fujii</string>
     <string name="topic1_ans009_4" translatable="false">Asuka Ota</string>
 
+    <string name="topic1_ans010_1" translatable="false">Gengis Khan</string>
+    <string name="topic1_ans010_2" translatable="false">Saladino</string>
+    <string name="topic1_ans010_3" translatable="false">Barba-Negra</string>
+    <string name="topic1_ans010_4" translatable="false">Juana de Arco</string>
+
+    <string name="topic1_ans011_1" translatable="false">Monk</string>
+    <string name="topic1_ans011_2" translatable="false">Animal</string>
+    <string name="topic1_ans011_3" translatable="false">Machine</string>
+    <string name="topic1_ans011_4" translatable="false">Ship</string>
+
+    <string name="topic1_ans012_1" translatable="false">Pokemon</string>
+    <string name="topic1_ans012_2" translatable="false">GTA</string>
+    <string name="topic1_ans012_3" translatable="false">Warfare</string>
+    <string name="topic1_ans012_4" translatable="false">Black Ops</string>
+
+    <string name="topic1_ans013_1" translatable="true">Fox</string>
+    <string name="topic1_ans013_2" translatable="true">Hedgehog</string>
+    <string name="topic1_ans013_3" translatable="true">Rabbit</string>
+    <string name="topic1_ans013_4" translatable="true">Tortoise</string>
+
+    <string name="topic1_ans014_1" translatable="false">Black Flag</string>
+    <string name="topic1_ans014_2" translatable="false">Origins</string>
+    <string name="topic1_ans014_3" translatable="false">II</string>
+    <string name="topic1_ans014_4" translatable="false">Unity</string>
+
+    <string name="topic1_ans015_1" translatable="false">Teemo</string>
+    <string name="topic1_ans015_2" translatable="false">Shaco</string>
+    <string name="topic1_ans015_3" translatable="false">Zyra</string>
+    <string name="topic1_ans015_4" translatable="false">Zac</string>
+
+    <string name="topic1_ans016_1" translatable="true">Tank</string>
+    <string name="topic1_ans016_2" translatable="false">ADC</string>
+    <string name="topic1_ans016_3" translatable="true">Mucus</string>
+    <string name="topic1_ans016_4" translatable="true">Water</string>
+
+    <string name="topic1_ans017_1" translatable="false">Mario Bros</string>
+    <string name="topic1_ans017_2" translatable="false">Pokemon</string>
+    <string name="topic1_ans017_3" translatable="false">NintenDogs</string>
+    <string name="topic1_ans017_4" translatable="false">AOE II</string>
+
+    <string name="topic1_ans018_1" translatable="false">PUBG</string>
+    <string name="topic1_ans018_2" translatable="false">Fortnite</string>
+    <string name="topic1_ans018_3" translatable="false">Battlefield</string>
+    <string name="topic1_ans018_4" translatable="false">Cooking Mama</string>
+
+    <string name="topic1_ans019_1" translatable="false">Sims</string>
+    <string name="topic1_ans019_2" translatable="false">Battlefield</string>
+    <string name="topic1_ans019_3" translatable="false">Bioshock</string>
+    <string name="topic1_ans019_4" translatable="false">Portal</string>
+
 
     <!-- Preguntas series -->
     <string name="topic2_q000">Who plays John Watson in BBC\'s Sherlock?</string>
@@ -180,6 +243,18 @@
     <string name="topic2_q007">What Doctor Who character was this theme composed for?</string>
     <string name="topic2_q008">What show is this song from?</string>
     <string name="topic2_q009">What show is this song from?</string>
+
+    <string name="topic2_q010">What TV Show  is this song?</string>
+    <string name="topic2_q011">What TV Show  is this song?</string>
+    <string name="topic2_q012">What TV Show  is this scene?</string>
+    <string name="topic2_q013">What\'s this girl\'s name?</string>
+    <string name="topic2_q014">What is it?</string>
+    <string name="topic2_q015">What TV Show is it?</string>
+    <string name="topic2_q016">In what TV Show do they change their bodies?</string>
+    <string name="topic2_q017">In what series were some planes tattooed?</string>
+    <string name="topic2_q018">How many children does Ned Stark have?</string>
+    <string name="topic2_q019">Who does not appear on the list of Arya Stark?</string>
+
 
     <!-- Respuestas series -->
     <string name="topic2_ans000_1" translatable="false">Matt Smith</string>
@@ -231,6 +306,58 @@
     <string name="topic2_ans009_2" translatable="false">The Office</string>
     <string name="topic2_ans009_3" translatable="false">Modern Family</string>
     <string name="topic2_ans009_4" translatable="false">Brooklyn Nine-Nine</string>
+
+
+    <string name="topic2_ans010_1" translatable="false">HIMYM</string>
+    <string name="topic2_ans010_2" translatable="false">Simpsons</string>
+    <string name="topic2_ans010_3" translatable="false">Friends</string>
+    <string name="topic2_ans010_4" translatable="false">Sense8</string>
+
+    <string name="topic2_ans011_1" translatable="false">Breaking Bad</string>
+    <string name="topic2_ans011_2" translatable="false">Sherlock</string>
+    <string name="topic2_ans011_3" translatable="false">OA</string>
+    <string name="topic2_ans011_4" translatable="false">Simpsons</string>
+
+    <string name="topic2_ans012_1" translatable="false">Breaking Bad</string>
+    <string name="topic2_ans012_2" translatable="true">SpongeBob</string>
+    <string name="topic2_ans012_3" translatable="false">Sherlock</string>
+    <string name="topic2_ans012_4" translatable="false">Mickey Mouse</string>
+
+    <string name="topic2_ans013_1" translatable="false">Ana</string>
+    <string name="topic2_ans013_2" translatable="false">Charly</string>
+    <string name="topic2_ans013_3" translatable="false">Bean</string>
+    <string name="topic2_ans013_4" translatable="false">Sense8</string>
+
+    <string name="topic2_ans014_1" translatable="true">Cat</string>
+    <string name="topic2_ans014_2" translatable="true">Dog</string>
+    <string name="topic2_ans014_3" translatable="true">Demon</string>
+    <string name="topic2_ans014_4" translatable="true">Mouse</string>
+
+    <string name="topic2_ans015_1" translatable="false">Star Treck</string>
+    <string name="topic2_ans015_2" translatable="false">Black Mirror</string>
+    <string name="topic2_ans015_3" translatable="false">Breaking Bad</string>
+    <string name="topic2_ans015_4" translatable="false">OA</string>
+
+    <string name="topic2_ans016_1" translatable="false">Altered Carbon</string>
+    <string name="topic2_ans016_2" translatable="false">100</string>
+    <string name="topic2_ans016_3" translatable="false">Vikings</string>
+    <string name="topic2_ans016_4" translatable="false">The Crown</string>
+
+    <string name="topic2_ans017_1" translatable="false">Vikings</string>
+    <string name="topic2_ans017_2" translatable="false">Breaking Bad</string>
+    <string name="topic2_ans017_3" translatable="false">Prison Break</string>
+    <string name="topic2_ans017_4" translatable="false">Mis Fits</string>
+
+    <string name="topic2_ans018_1" translatable="false">5</string>
+    <string name="topic2_ans018_2" translatable="false">4</string>
+    <string name="topic2_ans018_3" translatable="false">6</string>
+    <string name="topic2_ans018_4" translatable="false">3</string>
+
+    <string name="topic2_ans019_1" translatable="false">Melisandre</string>
+    <string name="topic2_ans019_2" translatable="false">Cersei</string>
+    <string name="topic2_ans019_3" translatable="false">Walder</string>
+    <string name="topic2_ans019_4" translatable="false">Brienne</string>
+
 
 
     <!-- Config -->

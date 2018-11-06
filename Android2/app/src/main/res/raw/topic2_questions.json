@@ -9,6 +9,18 @@
 { "question" : "topic2_q006", "type" : "video", "path" : "maggie", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans006_1", "topic2_ans006_2", "topic2_ans006_3", "topic2_ans006_4" ] },
 { "question" : "topic2_q007", "type" : "audio", "path" : "donnatheme", "cA" : 0, "iA" : true, "ans" : [ "topic2_ans007_1", "topic2_ans007_2", "topic2_ans007_3", "topic2_ans007_4" ] },
 { "question" : "topic2_q008", "type" : "audio", "path" : "sherlock", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans008_1", "topic2_ans008_2", "topic2_ans008_3", "topic2_ans008_4" ] },
-{ "question" : "topic2_q009", "type" : "audio", "path" : "parksandrec", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans009_1", "topic2_ans009_2", "topic2_ans009_3", "topic2_ans009_4" ] }
+{ "question" : "topic2_q009", "type" : "audio", "path" : "parksandrec", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans009_1", "topic2_ans009_2", "topic2_ans009_3", "topic2_ans009_4" ] },
+
+{ "question" : "topic2_q010", "type" : "audio", "path" : "himym", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans010_1", "topic2_ans010_2", "topic2_ans010_3", "topic2_ans010_4" ] },
+{ "question" : "topic2_q011", "type" : "audio", "path" : "simpson", "cA" : 3, "iA" : false, "ans" : [ "topic2_ans011_1", "topic2_ans011_2", "topic2_ans011_3", "topic2_ans011_4" ] },
+{ "question" : "topic2_q012", "type" : "video", "path" : "breaking", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans012_1", "topic2_ans012_2", "topic2_ans012_3", "topic2_ans012_4" ] },
+{ "question" : "topic2_q013", "type" : "video", "path" : "bean", "cA" : 2, "iA" : false, "ans" : [ "topic2_ans013_1", "topic2_ans013_2", "topic2_ans013_3", "topic2_ans013_4" ] },
+{ "question" : "topic2_q014", "type" : "image", "path" : "lucy", "cA" : 2, "iA" : false, "ans" : [ "topic2_ans014_1", "topic2_ans014_2", "topic2_ans014_3", "topic2_ans014_4" ] },
+{ "question" : "topic2_q015", "type" : "image", "path" : "blackmirror", "cA" : 1, "iA" : false, "ans" : [ "topic2_ans015_1", "topic2_ans015_2", "topic2_ans015_3", "topic2_ans015_4" ] },
+{ "question" : "topic2_q016", "type" : "text", "path" : "", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans016_1", "topic2_ans016_2", "topic2_ans016_3", "topic2_ans016_4" ] },
+{ "question" : "topic2_q017", "type" : "text", "path" : "", "cA" : 2, "iA" : false, "ans" : [ "topic2_ans017_1", "topic2_ans017_2", "topic2_ans017_3", "topic2_ans017_4" ] },
+{ "question" : "topic2_q018", "type" : "text", "path" : "", "cA" : 0, "iA" : false, "ans" : [ "topic2_ans018_1", "topic2_ans018_2", "topic2_ans018_3", "topic2_ans018_4" ] },
+{ "question" : "topic2_q019", "type" : "text", "path" : "", "cA" : 3, "iA" : false, "ans" : [ "topic2_ans019_1", "topic2_ans019_2", "topic2_ans019_3", "topic2_ans019_4" ] }
+
 
 ]
