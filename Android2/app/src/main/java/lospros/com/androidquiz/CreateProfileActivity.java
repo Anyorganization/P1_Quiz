@@ -1,17 +1,14 @@
 package lospros.com.androidquiz;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -51,7 +47,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
 
         hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-        if (false) {//TODO hasCam){
+        if (hasCam){
             setContentView(R.layout.activity_create_profile);
 
             btn_camera = (Button) findViewById(R.id.btn_camera);
@@ -84,7 +80,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
-                        img_1.setColorFilter(Color.argb(50,0,0,0));
+                        img_1.setColorFilter(Color.argb(70,0,0,0));
 
 
                         img_2.setColorFilter(Color.argb(0,0,0,0));
@@ -100,7 +96,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
-                        img_2.setColorFilter(Color.argb(50,0,0,0));
+                        img_2.setColorFilter(Color.argb(70,0,0,0));
 
                         img_1.setColorFilter(Color.argb(0,0,0,0));
                         img_3.setColorFilter(Color.argb(0,0,0,0));
@@ -114,7 +110,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
-                        img_3.setColorFilter(Color.argb(50,0,0,0));
+                        img_3.setColorFilter(Color.argb(70,0,0,0));
 
                         img_1.setColorFilter(Color.argb(0,0,0,0));
                         img_2.setColorFilter(Color.argb(0,0,0,0));
@@ -128,7 +124,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
-                        img_4.setColorFilter(Color.argb(50,0,0,0));
+                        img_4.setColorFilter(Color.argb(70,0,0,0));
 
                         img_1.setColorFilter(Color.argb(0,0,0,0));
                         img_2.setColorFilter(Color.argb(0,0,0,0));
@@ -144,7 +140,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
 
         campoNombre = (EditText) findViewById(R.id.editText_name);
-        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_submit = (Button) findViewById(R.id.btn_edit);
 
 
         btn_submit.setOnClickListener(new View.OnClickListener() {

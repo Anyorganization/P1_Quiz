@@ -92,6 +92,9 @@ public class ProfilesMenu extends AppCompatActivity {
                 editor.putString("NAME_PLAYER",profileList.get(position).getNombre());
                 editor.commit();
                 Toast.makeText(ProfilesMenu.this,"Ey " + profileList.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class); //Mostrar pantalla de final.
+                intent.putExtra("nameProfile", profileList.get(position).getNombre());
+                startActivity(intent);
 
             }
         });
