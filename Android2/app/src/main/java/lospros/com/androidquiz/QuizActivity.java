@@ -134,7 +134,7 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
     }
 
     private String questionsFile(SharedPreferences sharedPreferences ){
-        String topoc = sharedPreferences.getString("TOPIC","topic0");
+        String topoc = sharedPreferences.getString("TOPIC","topic1");
         InputStream is;
         ///Reading JSON.
         int id =getResources().getIdentifier(topoc+"_questions", "raw", getPackageName());
