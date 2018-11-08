@@ -78,7 +78,6 @@ public class RecordsManager {
         newValues.put(Utilidades.CAMPO_FECHA, System.currentTimeMillis());
         newValues.put(Utilidades.CAMPO_MAXPUNT, (int) Math.max(score, oldScore));
         newValues.put(Utilidades.CAMPO_NPARTIDAS, (nPartidas + 1));
-
         db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+name+"'", null);
 
         Toast.makeText(ctx, "nPartidas es "+ nPartidas, Toast.LENGTH_SHORT).show();

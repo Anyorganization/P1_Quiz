@@ -1,10 +1,12 @@
 package lospros.com.androidquiz;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScoresActivity extends AppCompatActivity {
 
@@ -32,5 +34,13 @@ public class ScoresActivity extends AppCompatActivity {
             tv.setText(r[i][1]);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), StartMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package lospros.com.androidquiz;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import lospros.com.androidquiz.utilidades.Utilidades;
+import lospros.com.androidquiz.utilidades.sharedUtilities;
 
 //TODO poner en los botones de los layouts @Strings...
 public class ProfileActivity extends AppCompatActivity {
@@ -192,6 +194,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         campoNombre = (EditText) findViewById(R.id.editText_name);
         btn_edit = (Button) findViewById(R.id.btn_edit);
+        btn_select = (Button) findViewById(R.id.btn_select);
+        btn_delete = (Button) findViewById(R.id.btn_delete);
 
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -202,62 +206,82 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        btn_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectProfile();
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteProfileSQL();
+            }
+        });
+
         campoNombre.setText(nameProfile);
     }
 
     private void editProfileSQL() {
-        SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
 
-        SQLiteDatabase db = conn.getWritableDatabase();
+        SQLiteDatabase db = new SQLiteManager(this, "bd_perfiles", null, 1).getWritableDatabase();
 
+        ContentValues newValues = new ContentValues();
 
-        ///////
-        Cursor cursor = db.rawQuery("select DISTINCT " + Utilidades.CAMPO_NOMBRE + " from " + Utilidades.TABLA_PERFIL + " where "
-                + Utilidades.CAMPO_NOMBRE + " = '" + campoNombre.getText().toString() + "'", null);
-
-        //cursor = your-query-here
-
-        if (cursor.getCount() < 1) {
-            int myInt = hasCam ? 1 : 0;
-            //INSERT INTO perfiles (nombre, fotopath, maxpunt, npartidas, dirimage) VALUES ('Pepe', 'IMG_0000.jpg', 25, 4, 0)
-            String insert = "INSERT INTO " + Utilidades.TABLA_PERFIL
-                    + " ("
-                    + Utilidades.CAMPO_NOMBRE + ","
-                    + Utilidades.CAMPO_FOTOPATH + ","
-                    + Utilidades.CAMPO_FECHA + ","
-                    + Utilidades.CAMPO_MAXPUNT + ","
-                    + Utilidades.CAMPO_NPARTIDAS + ","
-                    + Utilidades.CAMPO_DIRIMAGE
-                    + ")"
-                    + " VALUES ("
-                    + "'" + campoNombre.getText().toString() + "',"
-                    + "'" + fotoPath + "',"
-                    + null + ","
-                    + 0 + ","
-                    + 0 + ","
-                    + myInt
-                    //La puntuación máxima y número de partidas jugadas se ponen a 0 al principio
+        String newNameProfile = campoNombre.getText().toString();
+        newValues.put(Utilidades.CAMPO_FOTOPATH,fotoPath);
+        newValues.put(Utilidades.CAMPO_NOMBRE, newNameProfile);
 
 
-                    + ")";
+        db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+nameProfile+"'", null);
+        Toast.makeText(getApplicationContext(), "profile updated", Toast.LENGTH_SHORT).show(); //TODO hacer String
 
-            Log.i("sentencia SQL", insert);
+        Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
 
-            db.execSQL(insert);
-            db.close();
-
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("NAME_PLAYER", campoNombre.getText().toString());
-            editor.commit();
-
-        } else {
-            Toast.makeText(getApplicationContext(), "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
-        }
-        //////
 
 
     }
+
+    private void selectProfile(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(sharedUtilities.NAME_PLAYER,nameProfile);
+        editor.commit();
+        Toast.makeText(getApplicationContext(),R.string.profile_selected+" "+ nameProfile, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+
+    }
+
+    private void deleteProfileSQL(){
+
+        SQLiteDatabase db = new SQLiteManager(this, "bd_perfiles", null, 1).getWritableDatabase();
+        db.delete(Utilidades.TABLA_PERFIL,Utilidades.CAMPO_NOMBRE + "=" + "'"+nameProfile+"'",null);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String namePlayer = sharedPreferences.getString(sharedUtilities.NAME_PLAYER, sharedUtilities.PREF_ANON);
+        if(namePlayer.equals(nameProfile)){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(sharedUtilities.NAME_PLAYER,sharedUtilities.PREF_ANON);
+            editor.commit();
+        }
+
+        Toast.makeText(getApplicationContext(), "profile deleted", Toast.LENGTH_SHORT).show(); //TODO hacer String
+
+        Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -272,6 +296,14 @@ public class ProfileActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
 

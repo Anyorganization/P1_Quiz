@@ -79,5 +79,5 @@ public class StartMenu extends AppCompatActivity {
     public void openProfilesActivity(){ startActivity(new Intent(this, ProfilesMenu.class));}
 
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {finish(); System.exit(0);}
 }

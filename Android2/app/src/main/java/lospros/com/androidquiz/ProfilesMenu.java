@@ -86,19 +86,23 @@ public class ProfilesMenu extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                /*
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("NAME_PLAYER",profileList.get(position).getNombre());
                 editor.commit();
                 Toast.makeText(ProfilesMenu.this,"Ey " + profileList.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+               */
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class); //Mostrar pantalla de final.
                 intent.putExtra("nameProfile", profileList.get(position).getNombre());
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
 
             }
         });
     }
+
 
     private void writeInfoList() {
         infoList = new ArrayList<String>();
@@ -107,5 +111,14 @@ public class ProfilesMenu extends AppCompatActivity {
             infoList.add(profileList.get(i).getNombre() + " - " + profileList.get(i).getFotoPath()+ " - Fecha: "+ profileList.get(i).getFecha() +  " - nPartidas: "+ profileList.get(i).getnPartidas() + " - maxPunt: "+ profileList.get(i).getMaxPunt());
             //TODO añadir todos los campos con formato correcto
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(ProfilesMenu.this,"Ey le has dao patras", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), StartMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

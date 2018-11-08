@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,10 +27,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import lospros.com.androidquiz.utilidades.sharedUtilities;
+
 
 // Change layout: setContentView(R.layout.video_layout);
 
-public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswerDialog.NoticeDialogListener */{
+public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDialog.NoticeDialogListener{
 
 
     //Variables:
@@ -87,7 +90,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         //// Settings:
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        String namePlayer = sharedPreferences.getString(sharedUtilities.NAME_PLAYER,sharedUtilities.PREF_ANON);
 
         //Select Theme
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
@@ -113,6 +116,11 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        if(namePlayer.equals(sharedUtilities.PREF_ANON)){
+            DialogFragment fragmentDialog = new PlayingAsAnonDialog();
+            fragmentDialog.show(getSupportFragmentManager(),"playingasanondialog");
+
+        }
 
         questionList = new Gson().fromJson(questionsFile(sharedPreferences), new TypeToken<ArrayList<Question>>(){}.getType());
         Collections.shuffle(questionList);
@@ -319,6 +327,10 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
     }
 
     private void checkQuestion(int aux){
+
+
+
+
         if(mediaPlayer != null && mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
@@ -333,9 +345,7 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
             }else{//Si es la última:
-                Intent intent = new Intent(this, EndOfQuiz.class); //Mostrar pantalla de final.
-                intent.putExtra("score", score);
-                startActivity(intent);
+               finishQuiz();
             }
 
         } else {//Incorrecta
@@ -347,12 +357,34 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
                 currentQuestion++;
                 initQuestion(questionList.get(currentQuestion));
             }else{
-                Intent intent = new Intent(this, EndOfQuiz.class);
-                intent.putExtra("score", score);
-                startActivity(intent);
+                finishQuiz();
             }
         }
     }
+
+    private void finishQuiz(){
+
+        int secs = (int) (timeInMil/1000);
+
+        int finalScore = 0;
+        if(score>0){
+            finalScore = (int) (score*300000/timeInMil);
+        }else{
+
+            finalScore = (int) (score*timeInMil/300000);
+        }
+
+
+
+        Intent intent = new Intent(this, EndOfQuiz.class); //Mostrar pantalla de final.
+        intent.putExtra("score", finalScore);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+
+
+    }
+
     @Override
     protected void onDestroy () {
         super.onDestroy();
@@ -360,5 +392,23 @@ public class QuizActivity extends AppCompatActivity /*implements IncorrectAnswer
         customHandler.removeCallbacks(updateStopwatch);
 
 
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), StartMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

@@ -49,14 +49,12 @@
             <TextView
                 android:id="@+id/name_0"
                 android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:text="name" />
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/score_0"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:text="score"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -67,14 +65,12 @@
             <TextView
                 android:id="@+id/name_1"
                 android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:text="name" />
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/score_1"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:text="score"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -85,14 +81,12 @@
             <TextView
                 android:id="@+id/name_2"
                 android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:text="name" />
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/score_2"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:text="score"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -103,14 +97,12 @@
             <TextView
                 android:id="@+id/name_3"
                 android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:text="name" />
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/score_3"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:text="score"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -121,14 +113,12 @@
             <TextView
                 android:id="@+id/name_4"
                 android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:text="name" />
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/score_4"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:text="score"
                 android:textAlignment="textEnd" />
 
         </TableRow>

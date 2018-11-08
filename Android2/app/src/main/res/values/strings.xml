@@ -2,15 +2,20 @@
 
 
     <!-- Incorrect Answer Dialog -->
-    <string name="answer_dialog_msg">Wrong answer</string>
+    <string name="anon_dialog_msg">You are playing as anonymous</string>
     <string name="answer_dialog_positive">Continue</string>
-    <string name="answer_dialog_negative">Reset quiz</string>
+    <string name="answer_dialog_negative">Main menu</string>
     <string name="correct">Nice!</string>
 
     <string name="incorrect">Wrong...</string>
     <string name="app_name">Quiz</string>
     <string name="question">Question</string>
     <string name="anonymous">Anonymous</string>
+    <string name="profile_selected">You are now playing as</string>
+
+
+
+
 
     <!-- Preguntas -->
     <string name="topic0_q000">Where is Oslo?</string>

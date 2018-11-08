@@ -32,9 +32,8 @@
     <string name="topic0_ans004_4">Los Ángeles</string>
     <string name="text_start_button">Comenzar Quiz</string>
     <string name="text_settings_button">Configuración</string>
-    <string name="answer_dialog_msg">Respuesta incorrecta</string>
     <string name="answer_dialog_positive">Continuar</string>
-    <string name="answer_dialog_negative">Reiniciar quiz</string>
+    <string name="answer_dialog_negative">Menú principal</string>
     <string name="topic0_q005">¿Dónde nació la famosa cantante Céline Dion?</string>
     <string name="topic0_q006">¿Qué ciudad es esta?</string>
     <string name="topic0_q007">¿Qué imagen es París?</string>
@@ -155,5 +154,7 @@
     <string name="topic1_ans016_3">Moco</string>
     <string name="topic1_ans016_4">Agua</string>
     <string name="anonymous">Anónimo</string>
+    <string name="profile_selected">Ahora estás jugando como</string>
+    <string name="anon_dialog_msg">Estás jugando como anónimo</string>
 
 </resources>

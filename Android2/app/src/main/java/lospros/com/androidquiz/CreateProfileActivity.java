@@ -199,6 +199,8 @@ public class CreateProfileActivity extends AppCompatActivity {
             editor.putString("NAME_PLAYER",campoNombre.getText().toString());
             editor.commit();
 
+            Toast.makeText(CreateProfileActivity.this,"New profile selected", Toast.LENGTH_LONG).show();
+
         } else {
             Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
         }
@@ -222,23 +224,12 @@ public class CreateProfileActivity extends AppCompatActivity {
         }
     }
 
-
-    //TODO Esta función es antigua
-    /*private void createProfile() {
-        SQLiteManager conn = new SQLiteManager(this,"bd_perfiles",null,1);
-
-        SQLiteDatabase db = conn.getWritableDatabase();
-
-        ContentValues  values = new ContentValues();
-        values.put(Utilidades.CAMPO_ID, campoId.toString());
-        values.put(Utilidades.CAMPO_NOMBRE, campoNombre.toString());
-        values.put(Utilidades.CAMPO_FOTOPATH, campoFotoPath.toString());
-
-        Long idResultante = db.insert(Utilidades.TABLA_PERFIL, Utilidades.CAMPO_ID,values);
-        Log.i("PerfilCreado","id Registro:"+ idResultante );
-        Toast.makeText(getApplicationContext(),"id Registro:"+ idResultante, Toast.LENGTH_LONG).show();
-
-        db.close();
-    }*/
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
 
 }

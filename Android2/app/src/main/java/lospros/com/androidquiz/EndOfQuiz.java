@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import lospros.com.androidquiz.utilidades.sharedUtilities;
+
 public class EndOfQuiz extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,8 @@ public class EndOfQuiz extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
-        String namePlayer = sharedPreferences.getString("NAME_PLAYER","anom");
+        String namePlayer = sharedPreferences.getString(sharedUtilities.NAME_PLAYER, sharedUtilities.PREF_ANON);
+
         if(darkTheme){
             super.setTheme(R.style.DarkTheme);
         }else{
@@ -33,7 +36,7 @@ public class EndOfQuiz extends AppCompatActivity {
 
         TextView score = (TextView) findViewById(R.id.scoreText);
         score.setText(Integer.toString(value));
-        if(!namePlayer.equals("anom")){
+        if(!namePlayer.equals(sharedUtilities.PREF_ANON)){
 
             new RecordsManager().updateRecords(namePlayer,value,getApplicationContext());
         }
@@ -53,7 +56,9 @@ public class EndOfQuiz extends AppCompatActivity {
 
     public void playAgainButton(){
         Intent intent = new Intent(this, StartMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     @Override
