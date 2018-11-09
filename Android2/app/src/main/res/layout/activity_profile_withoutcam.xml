@@ -11,25 +11,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="84dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_edit"
+        app:layout_constraintBottom_toTopOf="@+id/text_record"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
         tools:text="Name" />
+
+    <TextView
+        android:id="@+id/text_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="8dp"
+        android:text="Record"
+        app:layout_constraintBottom_toTopOf="@+id/text_npartidas"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_npartidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="nPartidas"
+        app:layout_constraintBottom_toTopOf="@+id/text_date"
+        app:layout_constraintStart_toStartOf="@+id/text_record" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/btn_select"
+        app:layout_constraintStart_toStartOf="@+id/text_npartidas" />
 
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="28dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_date" />
 
     <Button
         android:id="@+id/btn_select"
@@ -56,8 +88,9 @@
         app:layout_constraintTop_toTopOf="@+id/btn_select" />
 
     <TableLayout
+        android:id="@+id/tableLayout2"
         android:layout_width="360dp"
-        android:layout_height="350dp"
+        android:layout_height="250dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -74,31 +107,31 @@
             <ImageView
                 android:id="@+id/img_1"
                 android:layout_width="180dp"
-                android:layout_height="175dp"
+                android:layout_height="125dp"
                 app:srcCompat="@drawable/default1" />
 
             <ImageView
                 android:id="@+id/img_2"
                 android:layout_width="180dp"
-                android:layout_height="175dp"
+                android:layout_height="125dp"
                 app:srcCompat="@drawable/default2" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/img_3"
                 android:layout_width="180dp"
-                android:layout_height="175dp"
+                android:layout_height="125dp"
                 app:srcCompat="@drawable/default3" />
 
             <ImageView
                 android:id="@+id/img_4"
                 android:layout_width="180dp"
-                android:layout_height="175dp"
+                android:layout_height="125dp"
                 app:srcCompat="@drawable/default4" />
         </TableRow>
 

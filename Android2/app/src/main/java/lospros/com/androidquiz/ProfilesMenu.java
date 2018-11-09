@@ -1,20 +1,31 @@
 package lospros.com.androidquiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,7 +66,8 @@ public class ProfilesMenu extends AppCompatActivity {
 
         getProfileList();
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, infoList);
+       // ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, infoList);
+        ArrayAdapter adapter = new ItemViewAdapater(getApplicationContext(),profileList);
         listView.setAdapter(adapter);
 
     }
@@ -73,15 +85,17 @@ public class ProfilesMenu extends AppCompatActivity {
 
         while (cursor.moveToNext()) {
             p = new Perfil();
-            p.setNombre(cursor.getString(0));
-            p.setFotoPath(cursor.getString(1));
-            p.setFecha(new Date(cursor.getLong(2))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
-            p.setMaxPunt(cursor.getInt(3));
-            p.setnPartidas(cursor.getInt(4));
-
+            p.setNombre(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_NOMBRE)));
+            p.setFotoPath(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH)));
+            p.setFecha(new Date(cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_FECHA)))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
+            p.setMaxPunt(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT)));
+            p.setnPartidas(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS)));
+            p.setDirImage(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE)));
             profileList.add(p);
+
+
         }
-        writeInfoList();
+        //writeInfoList();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -121,4 +135,62 @@ public class ProfilesMenu extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
+
+
+
+
+
+
+    public class ItemViewAdapater extends ArrayAdapter<Perfil> {
+
+        ArrayList<Perfil>  perfiles;
+
+
+        public ItemViewAdapater(Context ctx, ArrayList<Perfil> perfiles) {
+            super(ctx, R.layout.row_layout,perfiles);
+            this.perfiles=perfiles;
+            /*private view holder class*/
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.row_layout,parent, false);
+
+            ImageView imagen_icon = (ImageView) row.findViewById(R.id.icono_imagen);
+            TextView name_plist = (TextView) row.findViewById(R.id.name_profile_list);
+            TextView score_plist = (TextView) row.findViewById(R.id.record_list);
+            Perfil cp = perfiles.get(position);
+            if(perfiles.get(position).getDirImage()==0){
+                imagen_icon.setImageResource(getResources().getIdentifier(cp.getFotoPath(), "drawable", getPackageName()));
+            }else{
+
+                try {
+                    FileInputStream fis = openFileInput(cp.getFotoPath());
+                    InputStream is = new BufferedInputStream(fis);
+                    Bitmap bitmap = BitmapFactory.decodeStream(is);
+                    imagen_icon.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            name_plist.setText(cp.getNombre());
+            score_plist.setText(Integer.toString(cp.getMaxPunt()));
+
+            return  row;
+
+
+
+        }
+
+
+
+
+
+
+    }
+
+
+
 }

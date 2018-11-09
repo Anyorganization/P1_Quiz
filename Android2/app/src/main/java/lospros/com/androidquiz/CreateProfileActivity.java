@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import lospros.com.androidquiz.utilidades.Utilidades;
+import lospros.com.androidquiz.utilidades.sharedUtilities;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
@@ -157,56 +158,73 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
 
     private void createProfileSQL() {
-        SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
 
-        SQLiteDatabase db = conn.getWritableDatabase();
+        if(campoNombre.getText().toString().equals("") || campoNombre.getText().toString().equals(sharedUtilities.PREF_ANON)){
 
+            Toast.makeText(CreateProfileActivity.this, "Not valid name", Toast.LENGTH_SHORT).show(); //TODO traducir string
 
-        ///////
-        Cursor cursor = db.rawQuery("select DISTINCT " + Utilidades.CAMPO_NOMBRE + " from " + Utilidades.TABLA_PERFIL + " where "
-                + Utilidades.CAMPO_NOMBRE + " = '" + campoNombre.getText().toString() + "'", null);
+        }else if(fotoPath.equals("")){
+            Toast.makeText(CreateProfileActivity.this, "Take a photo bastard", Toast.LENGTH_SHORT).show(); //TODO traducir string
+        }else{
+            SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
 
-        //cursor = your-query-here
-
-        if (cursor.getCount() < 1) {
-            int myInt = hasCam ? 1 : 0;
-            //INSERT INTO perfiles (nombre, fotopath, maxpunt, npartidas, dirimage) VALUES ('Pepe', 'IMG_0000.jpg', 25, 4, 0)
-            String insert = "INSERT INTO " + Utilidades.TABLA_PERFIL
-                    + " ("
-                    + Utilidades.CAMPO_NOMBRE + ","
-                    + Utilidades.CAMPO_FOTOPATH + ","
-                    + Utilidades.CAMPO_FECHA + ","
-                    + Utilidades.CAMPO_MAXPUNT + ","
-                    + Utilidades.CAMPO_NPARTIDAS + ","
-                    + Utilidades.CAMPO_DIRIMAGE
-                    + ")"
-                    + " VALUES ("
-                    + "'" + campoNombre.getText().toString() + "',"
-                    + "'" + fotoPath + "',"
-                    + null + ","
-                    + 0 + ","
-                    + 0 + ","
-                    + myInt
-                    //La puntuación máxima y número de partidas jugadas se ponen a 0 al principio
+            SQLiteDatabase db = conn.getWritableDatabase();
 
 
-                    + ")";
+            ///////
+            Cursor cursor = db.rawQuery("select DISTINCT " + Utilidades.CAMPO_NOMBRE + " from " + Utilidades.TABLA_PERFIL + " where "
+                    + Utilidades.CAMPO_NOMBRE + " = '" + campoNombre.getText().toString() + "'", null);
 
-            Log.i("sentencia SQL", insert);
+            //cursor = your-query-here
 
-            db.execSQL(insert);
-            db.close();
 
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("NAME_PLAYER",campoNombre.getText().toString());
-            editor.commit();
+            if (cursor.getCount() < 1) {
+                int myInt = hasCam ? 1 : 0;
+                //INSERT INTO perfiles (nombre, fotopath, maxpunt, npartidas, dirimage) VALUES ('Pepe', 'IMG_0000.jpg', 25, 4, 0)
+                String insert = "INSERT INTO " + Utilidades.TABLA_PERFIL
+                        + " ("
+                        + Utilidades.CAMPO_NOMBRE + ","
+                        + Utilidades.CAMPO_FOTOPATH + ","
+                        + Utilidades.CAMPO_FECHA + ","
+                        + Utilidades.CAMPO_MAXPUNT + ","
+                        + Utilidades.CAMPO_NPARTIDAS + ","
+                        + Utilidades.CAMPO_DIRIMAGE
+                        + ")"
+                        + " VALUES ("
+                        + "'" + campoNombre.getText().toString() + "',"
+                        + "'" + fotoPath + "',"
+                        + 0 + ","
+                        + 0 + ","
+                        + 0 + ","
+                        + myInt
+                        //La puntuación máxima y número de partidas jugadas se ponen a 0 al principio
 
-            Toast.makeText(CreateProfileActivity.this,"New profile selected", Toast.LENGTH_LONG).show();
 
-        } else {
-            Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
+                        + ")";
+
+                Log.i("sentencia SQL", insert);
+
+                db.execSQL(insert);
+                db.close();
+
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("NAME_PLAYER",campoNombre.getText().toString());
+                editor.commit();
+
+                Toast.makeText(CreateProfileActivity.this,"New profile selected", Toast.LENGTH_LONG).show(); //TODO poner String
+                Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+
+            } else {
+                Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
+            }
         }
+
+
+
         //////
 
 

@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
@@ -30,6 +31,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import lospros.com.androidquiz.utilidades.Utilidades;
 import lospros.com.androidquiz.utilidades.sharedUtilities;
@@ -40,12 +43,18 @@ public class ProfileActivity extends AppCompatActivity {
     Button btn_edit, btn_select, btn_delete;
     Button btn_camera;
     ImageView img_profile;
+    TextView text_record, text_npartidas, text_date;
 
     ImageView img_1, img_2, img_3, img_4;
 
     String fotoPath = "";
     Boolean hasCam;
     String nameProfile;
+    Date date;
+    int nPartidas;
+    String date_string;
+    int record;
+
 
 
 
@@ -79,7 +88,20 @@ public class ProfileActivity extends AppCompatActivity {
         cursor.moveToFirst();
         int dirImage = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE));//TODO Hacer así en todas las lecturas (RecordsManager...etc).
         fotoPath=cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH));
-        if(dirImage==1){
+        nPartidas = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS));
+        record =  cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT));
+        Long fechaLeida = cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS));
+
+        if(!(fechaLeida==0L)){
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+            date_string = "Last game: "+sdf.format(new Date(fechaLeida));//TODO String
+        }else{
+            date_string = "No games"; //TODO String...
+        }
+
+
+
+        if(dirImage==0){
             hasCam=true;
         }else{
             hasCam=false;
@@ -94,6 +116,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         btn_camera = (Button) findViewById(R.id.btn_camera);
         img_profile = (ImageView) findViewById(R.id.img_profile);
+
+
+
 
 
         try {
@@ -197,6 +222,11 @@ public class ProfileActivity extends AppCompatActivity {
         btn_select = (Button) findViewById(R.id.btn_select);
         btn_delete = (Button) findViewById(R.id.btn_delete);
 
+        //INFO
+        text_record = (TextView)findViewById(R.id.text_record);
+        text_npartidas = (TextView)findViewById(R.id.text_npartidas);
+        text_date = (TextView)findViewById(R.id.text_date);
+
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,6 +251,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         campoNombre.setText(nameProfile);
+
+        //INFO
+        text_record.setText("Record: "+Integer.toString(record));
+        text_npartidas.setText("Games: "+ Integer.toString(nPartidas));
+        text_date.setText(date_string);
+
     }
 
     private void editProfileSQL() {

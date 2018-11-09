@@ -8,6 +8,8 @@ public class Perfil {
     private String fotoPath;
     private Integer maxPunt;
     private Integer nPartidas;
+    private Integer dirImage;
+
 
     //https://stackoverflow.com/questions/7363112/best-way-to-work-with-dates-in-android-sqlite
     private Date fecha;
@@ -21,7 +23,6 @@ public class Perfil {
         this.fotoPath = fotoPath;
         maxPunt =0;
         nPartidas=0;
-
     }
 
     public String getNombre() {
@@ -61,6 +62,14 @@ public class Perfil {
             return null;
         }
         return fecha;
+    }
+
+    public Integer getDirImage() {
+        return dirImage;
+    }
+
+    public void setDirImage(Integer dirImage) {
+        this.dirImage = dirImage;
     }
 
     public void setFecha(Date fecha) {
