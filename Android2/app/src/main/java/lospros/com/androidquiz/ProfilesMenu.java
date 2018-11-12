@@ -45,6 +45,17 @@ public class ProfilesMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Select Theme
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            super.setTheme(R.style.DarkTheme);
+        }else{
+            super.setTheme(R.style.LightTheme);
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiles_menu);
 
@@ -81,20 +92,38 @@ public class ProfilesMenu extends AppCompatActivity {
         profileList = new ArrayList<Perfil>();
 
         //SELECT * FROM perfiles
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL, null);
+        try{
+            Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL, null);
 
-        while (cursor.moveToNext()) {
-            p = new Perfil();
-            p.setNombre(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_NOMBRE)));
-            p.setFotoPath(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH)));
-            p.setFecha(new Date(cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_FECHA)))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
-            p.setMaxPunt(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT)));
-            p.setnPartidas(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS)));
-            p.setDirImage(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE)));
-            profileList.add(p);
+            while (cursor.moveToNext()) {
+                p = new Perfil();
+                p.setNombre(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_NOMBRE)));
+                p.setFotoPath(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH)));
+                p.setFecha(new Date(cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_FECHA)))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
+                p.setMaxPunt(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT)));
+                p.setnPartidas(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS)));
+                p.setDirImage(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE)));
+                profileList.add(p);
+            }
+        }catch (Exception e){
+            db.execSQL(Utilidades.CREAR_TABLA_PERFIL);
+            Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL, null);
 
+            while (cursor.moveToNext()) {
+                p = new Perfil();
+                p.setNombre(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_NOMBRE)));
+                p.setFotoPath(cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH)));
+                p.setFecha(new Date(cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_FECHA)))); //DateFormat.getDateInstance().format(System.currentTimeMillis());
+                p.setMaxPunt(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT)));
+                p.setnPartidas(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS)));
+                p.setDirImage(cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE)));
+                profileList.add(p);
+
+
+            }
 
         }
+
         //writeInfoList();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

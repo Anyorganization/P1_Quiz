@@ -48,6 +48,7 @@
         <item name="colorAccent">@color/orange</item>
 
         <item name="android:fontFamily">@font/londontube</item>
+        <item name="buttonStyle">@style/btn</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light">
@@ -63,7 +64,7 @@
         <item name="android:textColorPrimary">@color/skyBlue</item>
 
         <item name="android:fontFamily">@font/londontube</item>
-
+        <item name="buttonStyle">@style/btn</item>
     </style>
 
     <style name="grayTheme" parent="Theme.AppCompat.Light">
@@ -78,6 +79,12 @@
         <item name="android:textColorPrimary">@color/black</item>
 
 
+    </style>
+
+    <style name="btn" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/orange</item>
+        <item name="android:textColor">@color/darkBlack</item>
+        <item name="android:radius">20dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

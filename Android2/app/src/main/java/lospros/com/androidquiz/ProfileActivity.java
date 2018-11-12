@@ -61,6 +61,18 @@ public class ProfileActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Select Theme
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            super.setTheme(R.style.DarkTheme);
+        }else{
+            super.setTheme(R.style.LightTheme);
+        }
+
+
+
         super.onCreate(savedInstanceState);
 
         //hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
@@ -90,18 +102,16 @@ public class ProfileActivity extends AppCompatActivity {
         fotoPath=cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH));
         nPartidas = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS));
         record =  cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT));
-        Long fechaLeida = cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS));
+        Long fechaLeida = cursor.getLong(cursor.getColumnIndex(Utilidades.CAMPO_FECHA));
 
         if(!(fechaLeida==0L)){
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
             date_string = "Last game: "+sdf.format(new Date(fechaLeida));//TODO String
         }else{
-            date_string = "No games"; //TODO String...
+            date_string = "";
         }
 
-
-
-        if(dirImage==0){
+        if(dirImage==1){
             hasCam=true;
         }else{
             hasCam=false;
@@ -150,7 +160,7 @@ public class ProfileActivity extends AppCompatActivity {
         img_3 = (ImageView) findViewById(R.id.img_3);
         img_4 = (ImageView) findViewById(R.id.img_4);
 
-        hasCam = false; //TODO quitar esta linea cuando se ponga el if sin el false forzado.
+
 
 
         img_1.setOnTouchListener(new View.OnTouchListener() {

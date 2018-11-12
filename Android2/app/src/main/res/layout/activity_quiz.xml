@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/question"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,21 +36,22 @@
         android:layout_height="1dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="300dp"
         android:background="#813e3e3e"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/text_question"
-        app:layout_constraintTop_toBottomOf="@+id/question_image"
+        app:layout_constraintTop_toTopOf="@+id/label_time"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/answer1"
         android:layout_width="175dp"
         android:layout_height="130dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ruler" />
 
@@ -59,8 +59,7 @@
         android:id="@+id/answer2"
         android:layout_width="175dp"
         android:layout_height="130dp"
-        android:layout_marginEnd="8dp"
-        android:text="Button"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/answer1" />
 
@@ -68,10 +67,9 @@
         android:id="@+id/answer3"
         android:layout_width="175dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="14dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:text="Button"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer1" />
@@ -80,8 +78,7 @@
         android:id="@+id/answer4"
         android:layout_width="175dp"
         android:layout_height="130dp"
-        android:layout_marginEnd="8dp"
-        android:text="Button"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/answer3"
 
@@ -91,21 +88,20 @@
         android:id="@+id/question_image"
         android:layout_width="243dp"
         android:layout_height="133dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:src="@drawable/artefinal"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/image_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_question" />
+        app:layout_constraintTop_toTopOf="@+id/label_time" />
 
     <TextView
         android:id="@+id/label_hits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

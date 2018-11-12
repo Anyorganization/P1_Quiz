@@ -45,6 +45,16 @@ public class CreateProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Select Theme
+        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+        if(darkTheme){
+            super.setTheme(R.style.DarkTheme);
+        }else{
+            super.setTheme(R.style.LightTheme);
+        }
+
+
         super.onCreate(savedInstanceState);
 
 

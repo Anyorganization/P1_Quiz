@@ -34,7 +34,9 @@ public class PlayingAsAnonDialog extends DialogFragment {
                 });
 
 
-        return builder.create();
+        Dialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 
     @Override//https://developer.android.com/guide/topics/ui/dialogs

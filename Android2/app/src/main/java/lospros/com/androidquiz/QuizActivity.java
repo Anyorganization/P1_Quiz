@@ -116,20 +116,24 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+
         if(namePlayer.equals(sharedUtilities.PREF_ANON)){
             DialogFragment fragmentDialog = new PlayingAsAnonDialog();
             fragmentDialog.show(getSupportFragmentManager(),"playingasanondialog");
 
+        }else{
+            questionList = new Gson().fromJson(questionsFile(sharedPreferences), new TypeToken<ArrayList<Question>>(){}.getType());
+            Collections.shuffle(questionList);
+
+            initQuestion(questionList.get(currentQuestion));
+
+
+            //Se inicia el cronómetro:
+            startTime = SystemClock.uptimeMillis();
         }
 
-        questionList = new Gson().fromJson(questionsFile(sharedPreferences), new TypeToken<ArrayList<Question>>(){}.getType());
-        Collections.shuffle(questionList);
-
-        initQuestion(questionList.get(currentQuestion));
 
 
-        //Se inicia el cronómetro:
-        startTime = SystemClock.uptimeMillis();
 
     }
 
@@ -374,34 +378,35 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
             finalScore = (int) (score*timeInMil/300000);
         }
 
-
-
         Intent intent = new Intent(this, EndOfQuiz.class); //Mostrar pantalla de final.
         intent.putExtra("score", finalScore);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
-
-
     }
 
     @Override
     protected void onDestroy () {
         super.onDestroy();
-
         customHandler.removeCallbacks(updateStopwatch);
-
-
     }
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        questionList = new Gson().fromJson(questionsFile(sharedPreferences), new TypeToken<ArrayList<Question>>(){}.getType());
+        Collections.shuffle(questionList);
 
+        initQuestion(questionList.get(currentQuestion));
+
+
+        //Se inicia el cronómetro:
+        startTime = SystemClock.uptimeMillis();
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
+        onBackPressed();
     }
 
     @Override
