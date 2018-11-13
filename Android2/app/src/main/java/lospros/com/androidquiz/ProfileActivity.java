@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.media.Image;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +39,7 @@ import lospros.com.androidquiz.utilidades.Utilidades;
 import lospros.com.androidquiz.utilidades.sharedUtilities;
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements ConfirmDeleteDialog.NoticeDialogListener{
     EditText campoNombre;
     Button btn_edit, btn_select, btn_delete;
     Button btn_camera;
@@ -106,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(!(fechaLeida==0L)){
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
-            date_string = getString(R.string.last_game)+sdf.format(new Date(fechaLeida));
+            date_string = getString(R.string.last_game)+ " " +sdf.format(new Date(fechaLeida));
         }else{
             date_string = "";
         }
@@ -256,7 +257,8 @@ public class ProfileActivity extends AppCompatActivity {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteProfileSQL();
+                DialogFragment fragmentDialog = new ConfirmDeleteDialog();
+                fragmentDialog.show(getSupportFragmentManager(),"confirmdeletedialog");
             }
         });
 
@@ -297,7 +299,7 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(sharedUtilities.NAME_PLAYER,nameProfile);
         editor.commit();
-        Toast.makeText(getApplicationContext(),getString(R.string.new_profile_selected)+" "+ nameProfile, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),getString(R.string.profile_selected)+" "+ nameProfile, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -319,7 +321,7 @@ public class ProfileActivity extends AppCompatActivity {
             editor.commit();
         }
 
-        Toast.makeText(getApplicationContext(), "profile deleted", Toast.LENGTH_SHORT).show(); //TODO hacer String
+        Toast.makeText(getApplicationContext(), R.string.profile_deleted, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -353,4 +355,13 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        deleteProfileSQL();
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        //No ocurre nada
+    }
 }

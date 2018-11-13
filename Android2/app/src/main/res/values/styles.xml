@@ -32,18 +32,18 @@
     <item name="orange" type="color">#ff9100</item>
     <item name="gray" type="color">#a3a3a3</item>
 
-    <!-- Nuevos-->
+    <!-- Nuevos colores -->
     <item name="darkBlack" type="color">#06050e</item>
     <item name="darkBlue" type="color">#3c33a5</item>
     <item name="lightBlue" type="color">#0777f4</item>
     <item name="lightWhite" type="color">#e3f1fd</item>
 
     <style name="LightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/skyBlue</item>
+        <item name="colorPrimary">@color/lightBlue</item>
         <item name="colorPrimaryDark">@color/transparent</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/darkBlack</item>
         <item name="android:windowBackground">@drawable/light_bg</item>
-        <item name="android:colorBackground">@color/skyBlue</item>
+        <item name="android:colorBackground">@color/lightBlue</item>
         <item name="colorAccent">@color/orange</item>
         <item name="android:fontFamily">@font/londontube</item>
         <item name="buttonStyle">@style/btn</item>
@@ -52,11 +52,23 @@
     <style name="DarkTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/darkBlack</item>
         <item name="colorPrimaryDark">@color/transparent</item>
-        <item name="android:textColor">@color/skyBlue</item>
+        <item name="android:textColor">@color/orange</item>
         <item name="android:windowBackground">@drawable/dark_bg</item>
-        <item name="android:colorBackground">@color/black</item>
+        <item name="android:colorBackground">@color/darkBlack</item>
         <item name="colorAccent">@color/orange</item>
-        <item name="android:textColorPrimary">@color/skyBlue</item>
+        <item name="android:textColorPrimary">@color/darkBlue</item>
+        <item name="android:fontFamily">@font/londontube</item>
+        <item name="buttonStyle">@style/btn</item>
+    </style>
+
+    <style name="StartTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/lightBlue</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:windowBackground">@drawable/start_bg</item>
+        <item name="android:colorBackground">@color/lightBlue</item>
+        <item name="colorAccent">@color/orange</item>
+        <item name="android:textColorPrimary">@color/darkBlack</item>
         <item name="android:fontFamily">@font/londontube</item>
         <item name="buttonStyle">@style/btn</item>
     </style>

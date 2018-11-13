@@ -36,7 +36,7 @@ public class SettingsActivity extends Activity {
     }
     @Override
     public void onBackPressed() {
-        Toast.makeText(getApplicationContext(),"Settings saved", Toast.LENGTH_LONG).show(); //TODO Strings aquí camarero
+        Toast.makeText(getApplicationContext(), R.string.settings_saved, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), StartMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

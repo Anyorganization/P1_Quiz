@@ -6,7 +6,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ScoresActivity extends AppCompatActivity {
 
@@ -34,7 +33,7 @@ public class ScoresActivity extends AppCompatActivity {
             tv.setText(r[i][1]);
 
             tv = findViewById(getResources().getIdentifier("time_"+i, "id", getPackageName()));
-            tv.setText(r[i][2]+"s");
+            tv.setText(r[i][2]);
         }
 
     }

@@ -12,31 +12,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/quiz_icon_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".QuizActivity"
-            android:theme="@style/LightTheme">
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".QuizActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
             android:name=".StartMenu"
-            android:theme="@style/LightTheme">
+            android:theme="@style/StartTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity" />
-        <activity
-            android:name=".EndOfQuiz"
-            android:theme="@style/LightTheme" />
-        <activity android:name=".ScoresActivity" />
-        <activity android:name=".ProfilesMenu" />
-        <activity android:name=".CreateProfileActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".SettingsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".EndOfQuiz" android:screenOrientation="portrait"/>
+        <activity android:name=".ScoresActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ProfilesMenu" android:screenOrientation="portrait"/>
+        <activity android:name=".CreateProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ProfileActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

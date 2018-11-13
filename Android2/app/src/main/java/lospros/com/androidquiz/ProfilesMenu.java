@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -28,7 +27,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import lospros.com.androidquiz.entidades.Perfil;
 import lospros.com.androidquiz.utilidades.Utilidades;
@@ -37,7 +35,6 @@ public class ProfilesMenu extends AppCompatActivity {
 
     Button create_profile;
     ListView listView;
-    ArrayList<String> infoList;
     ArrayList<Perfil> profileList;
 
     SQLiteManager conn;
@@ -77,7 +74,6 @@ public class ProfilesMenu extends AppCompatActivity {
 
         getProfileList();
 
-       // ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, infoList);
         ArrayAdapter adapter = new ItemViewAdapater(getApplicationContext(),profileList);
         listView.setAdapter(adapter);
 
@@ -124,18 +120,10 @@ public class ProfilesMenu extends AppCompatActivity {
 
         }
 
-        //writeInfoList();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("NAME_PLAYER",profileList.get(position).getNombre());
-                editor.commit();
-                Toast.makeText(ProfilesMenu.this,"Ey " + profileList.get(position).getNombre(), Toast.LENGTH_SHORT).show();
-               */
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class); //Mostrar pantalla de final.
                 intent.putExtra("nameProfile", profileList.get(position).getNombre());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -146,31 +134,13 @@ public class ProfilesMenu extends AppCompatActivity {
         });
     }
 
-
-    private void writeInfoList() {
-        infoList = new ArrayList<String>();
-
-        for(int i = 0; i < profileList.size(); i++){
-            infoList.add(profileList.get(i).getNombre() + " - " + profileList.get(i).getFotoPath()+ " - Fecha: "+ profileList.get(i).getFecha() +  " - nPartidas: "+ profileList.get(i).getnPartidas() + " - maxPunt: "+ profileList.get(i).getMaxPunt());
-            //TODO añadir todos los campos con formato correcto
-        }
-    }
-
     @Override
     public void onBackPressed() {
-        Toast.makeText(ProfilesMenu.this,"Ey le has dao patras", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), StartMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
-
-
-
-
-
-
-
 
     public class ItemViewAdapater extends ArrayAdapter<Perfil> {
 
@@ -209,17 +179,8 @@ public class ProfilesMenu extends AppCompatActivity {
 
             return  row;
 
-
-
         }
 
-
-
-
-
-
     }
-
-
 
 }

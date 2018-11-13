@@ -19,14 +19,7 @@ public class StartMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
-        if(darkTheme){
-            getApplication().setTheme(R.style.DarkTheme);
-        }else{
-            getApplication().setTheme(R.style.LightTheme);
-        }
-
+        getApplication().setTheme(R.style.StartTheme);
 
         super.onCreate(savedInstanceState);
 

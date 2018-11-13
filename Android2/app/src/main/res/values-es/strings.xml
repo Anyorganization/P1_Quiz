@@ -156,7 +156,7 @@
     <string name="anonymous">Anónimo</string>
     <string name="profile_selected">"Ahora estás jugando como "</string>
     <string name="anon_dialog_msg">Estás jugando como anónimo</string>
-    <string name="incorret_name">Nombre no válido</string>
+    <string name="incorrect_name">Nombre no válido</string>
     <string name="no_photo">Por favor, haz una foto</string>
     <string name="new_profile_selected">"Nuevo perfil seleccionado: "</string>
     <string name="name_already_exists">Este nombre ya existe</string>
@@ -168,5 +168,9 @@
     <string name="last_game">"Última partida: "</string>
     <string name="profile_updated">Perfil actualizado</string>
     <string name="time">Tiempo</string>
+    <string name="profile_deleted">Perfil eliminado</string>
+    <string name="settings_saved">Configuración guardada</string>
+    <string name="delete_dialog_msg">¿Estás seguro de que quieres borrar este perfil?</string>
+    <string name="cancel">Cancelar</string>
 
 </resources>

@@ -5,15 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
-import java.io.DataInput;
-import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -22,10 +18,10 @@ import lospros.com.androidquiz.utilidades.Utilidades;
 
 public class RecordsManager {
     private ArrayList<Integer> records;
-    private ArrayList<Integer> times;
+    private ArrayList<String> times; //Tiempos en String porque van en formato mm:ss
     private ArrayList<String> names;
 
-    public void createRecords(){
+    /*public void createRecords(){
         for(int i =0; i<5;i++) {
 
             names.add("A"+i);
@@ -35,14 +31,14 @@ public class RecordsManager {
     }
 
 
-
+*/
     public RecordsManager() {
         times = new ArrayList<>();
         records = new ArrayList<>();
         names = new ArrayList<>();
     }
 
-    public void updateRecords(String name, int score,int time, Context ctx){
+    public void updateRecords(String name, int score, String time, Context ctx){
         readFile(ctx);
         records.add(score);
         names.add(name);
@@ -102,7 +98,7 @@ public class RecordsManager {
                     names.set(j+1,names.get(j));
                     names.set(j, aux);
 
-                    int temp2 = times.get(j+1);
+                    String temp2 = times.get(j+1);
                     times.set(j+1,times.get(j));
                     times.set(j,temp2);
 
@@ -119,13 +115,12 @@ public class RecordsManager {
 
             p[i][0] = names.get(i);
             p[i][1] = Integer.toString(records.get(i));
-            p[i][2] = Integer.toString(times.get(i));
+            p[i][2] = times.get(i);
         }
         return p;
     }
 
     private void readFile(Context ctx){
-        //TODO leer con GSON
         Gson gson = new Gson();
         FileInputStream fin = null;
         try {
@@ -152,13 +147,12 @@ public class RecordsManager {
     public void setRecords(ArrayList<Integer> records) {
         this.records = records;
     }
-
     public void setNames(ArrayList<String> names) {
         this.names = names;
     }
-    public void setTimes(ArrayList<Integer> times) { this.times = times; }
+    public void setTimes(ArrayList<String> times) { this.times = times; }
 
-    public ArrayList<Integer> getTimes() {
+    public ArrayList<String> getTimes() {
         return times;
     }
 

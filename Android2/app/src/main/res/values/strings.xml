@@ -5,6 +5,8 @@
     <string name="anon_dialog_msg">You are playing as anonymous</string>
     <string name="answer_dialog_positive">Continue</string>
     <string name="answer_dialog_negative">Main menu</string>
+    <string name="cancel">Cancel</string>
+
     <string name="correct">Nice!</string>
 
     <string name="incorrect">Wrong...</string>
@@ -13,9 +15,9 @@
     <string name="anonymous">Anonymous</string>
 
     <!-- Create profile -->
-    <string name="incorret_name">Not valid name</string>
+    <string name="incorrect_name">Name not valid</string>
     <string name="no_photo">Please, take a photo</string>
-    <string name="new_profile_selected">New profile selected</string>
+    <string name="new_profile_selected">New profile selected:</string>
     <string name="name_already_exists">There is already a profile with this name</string>
     <string name="edit">Edit</string>
     <string name="select">Select</string>
@@ -400,6 +402,10 @@
     <string name="name_title">Player</string>
     <string name="score_title">Score</string>
     <string name="text_profiles_button">Profiles</string>
+    <string name="profile_deleted">Profile deleted</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="profile_selected">You are now playing as</string>
+    <string name="delete_dialog_msg">Are you sure you want to delete this profile?</string>
 
 
 </resources>

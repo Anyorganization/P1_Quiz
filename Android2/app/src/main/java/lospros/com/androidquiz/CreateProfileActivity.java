@@ -169,7 +169,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         if(campoNombre.getText().toString().equals("") || campoNombre.getText().toString().equals(sharedUtilities.PREF_ANON)){
 
-            Toast.makeText(CreateProfileActivity.this, R.string.incorret_name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateProfileActivity.this, R.string.incorrect_name, Toast.LENGTH_SHORT).show();
 
         }else if(fotoPath.equals("")){
             Toast.makeText(CreateProfileActivity.this, R.string.no_photo, Toast.LENGTH_SHORT).show();
