@@ -142,9 +142,9 @@
 
     <string name="topic1_q010">What is not a campaign in Age of Empires II?</string>
     <string name="topic1_q011">What sounds?</string>
-    <string name="topic1_q012">In what saga there are zombies?</string>
+    <string name="topic1_q012">In what saga are there zombies?</string>
     <string name="topic1_q013">Which animal is Sonic?</string>
-    <string name="topic1_q014">Which Assasins Creed is this?</string>
+    <string name="topic1_q014">Which Assasin\'s Creed is this?</string>
     <string name="topic1_q015">Which character is this?</string>
     <string name="topic1_q016">What kind is this character?</string>
     <string name="topic1_q017">What game is this song?</string>
@@ -204,7 +204,7 @@
 
     <string name="topic1_ans010_1" translatable="false">Gengis Khan</string>
     <string name="topic1_ans010_2" translatable="false">Saladino</string>
-    <string name="topic1_ans010_3" translatable="false">Barba-Negra</string>
+    <string name="topic1_ans010_3" translatable="false">Blackbeard</string>
     <string name="topic1_ans010_4" translatable="false">Juana de Arco</string>
 
     <string name="topic1_ans011_1" translatable="false">Monk</string>
@@ -265,9 +265,9 @@
     <string name="topic2_q008">What show is this song from?</string>
     <string name="topic2_q009">What show is this song from?</string>
 
-    <string name="topic2_q010">What TV Show  is this song?</string>
-    <string name="topic2_q011">What TV Show  is this song?</string>
-    <string name="topic2_q012">What TV Show  is this scene?</string>
+    <string name="topic2_q010">What TV Show  is this song from?</string>
+    <string name="topic2_q011">What TV Show  is this song from?</string>
+    <string name="topic2_q012">What TV Show  is this scene from?</string>
     <string name="topic2_q013">What\'s this girl\'s name?</string>
     <string name="topic2_q014">What is it?</string>
     <string name="topic2_q015">What TV Show is it?</string>
@@ -354,7 +354,7 @@
     <string name="topic2_ans014_3" translatable="true">Demon</string>
     <string name="topic2_ans014_4" translatable="true">Mouse</string>
 
-    <string name="topic2_ans015_1" translatable="false">Star Treck</string>
+    <string name="topic2_ans015_1" translatable="false">Star Trek</string>
     <string name="topic2_ans015_2" translatable="false">Black Mirror</string>
     <string name="topic2_ans015_3" translatable="false">Breaking Bad</string>
     <string name="topic2_ans015_4" translatable="false">OA</string>

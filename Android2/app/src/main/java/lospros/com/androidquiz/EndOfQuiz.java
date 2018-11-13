@@ -17,7 +17,7 @@ public class EndOfQuiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
+        //Se carga el tema elegido.
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
         String namePlayer = sharedPreferences.getString(sharedUtilities.NAME_PLAYER, sharedUtilities.PREF_ANON);
@@ -40,6 +40,7 @@ public class EndOfQuiz extends AppCompatActivity {
 
         TextView text_time = (TextView) findViewById(R.id.scoreText2);
 
+        //se da formato al tiempo de partida:
         int min = time/60;
         time%=60;
         String time_string = "";
@@ -52,6 +53,7 @@ public class EndOfQuiz extends AppCompatActivity {
 
         text_time.setText(getString(R.string.time)+ " "+ time_string);
 
+        //Si el jugador es anónimo, no se guarda el record.
         if(!namePlayer.equals(sharedUtilities.PREF_ANON)){
 
             new RecordsManager().updateRecords(namePlayer,value,time_string,getApplicationContext());

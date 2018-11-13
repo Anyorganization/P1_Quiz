@@ -28,6 +28,7 @@ import java.io.IOException;
 import lospros.com.androidquiz.utilidades.Utilidades;
 import lospros.com.androidquiz.utilidades.sharedUtilities;
 
+//Esta clase se instancia al hacer click en "crear nuevo perfil".
 public class CreateProfileActivity extends AppCompatActivity {
 
     EditText campoNombre;
@@ -38,8 +39,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     ImageView img_1, img_2, img_3, img_4;
 
     String fotoPath = "";
-    Boolean hasCam;
-
+    Boolean hasCam;//Guarda información para saber si el usuario tiene cámara
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -48,22 +48,18 @@ public class CreateProfileActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         //Select Theme
         Boolean darkTheme = sharedPreferences.getBoolean("DARK_THEME", false);
+
         if(darkTheme){
             super.setTheme(R.style.DarkTheme);
         }else{
             super.setTheme(R.style.LightTheme);
         }
-
-
         super.onCreate(savedInstanceState);
 
-
-
-
         hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        //Si tiene cámara se carga el layout preparado para sacar foto.
         if (hasCam){
             setContentView(R.layout.activity_create_profile);
-
             btn_camera = (Button) findViewById(R.id.btn_camera);
             img_profile = (ImageView) findViewById(R.id.img_profile);
 
@@ -73,21 +69,18 @@ public class CreateProfileActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, 0);
-
-
                 }
             });
 
-
+        //Si no tiene cámara:
         } else {
             setContentView(R.layout.activity_create_profile_withoutcam);
-
             img_1 = (ImageView) findViewById(R.id.img_1);
             img_2 = (ImageView) findViewById(R.id.img_2);
             img_3 = (ImageView) findViewById(R.id.img_3);
             img_4 = (ImageView) findViewById(R.id.img_4);
 
-
+            //Una a una se cargan todas las funciones de selección de imagen, se guarda el id de la última seleccionada "defaultX".
             img_1.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -146,8 +139,6 @@ public class CreateProfileActivity extends AppCompatActivity {
                     return false;
                 }
             });
-
-
         }
 
 
@@ -166,12 +157,12 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
 
     private void createProfileSQL() {
-
+        //Se evita que no ponga nombre o que el nombre ya esté usado.
         if(campoNombre.getText().toString().equals("") || campoNombre.getText().toString().equals(sharedUtilities.PREF_ANON)){
 
             Toast.makeText(CreateProfileActivity.this, R.string.incorrect_name, Toast.LENGTH_SHORT).show();
 
-        }else if(fotoPath.equals("")){
+        }else if(fotoPath.equals("")){//Se evita que no haga foto.
             Toast.makeText(CreateProfileActivity.this, R.string.no_photo, Toast.LENGTH_SHORT).show();
         }else{
             SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
@@ -237,14 +228,14 @@ public class CreateProfileActivity extends AppCompatActivity {
 
 
     }
-
+    //La cámara llama a esta función tras aceptar.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
         img_profile.setImageBitmap(bitmap);
         try {
-            fotoPath = "IMG_" + System.currentTimeMillis() + ".jpg";
+            fotoPath = "IMG_" + System.currentTimeMillis() + ".jpg";//Se asegura tener un nombre distinto para cada perfil.
             FileOutputStream out = openFileOutput(fotoPath, Context.MODE_PRIVATE);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
             out.close();

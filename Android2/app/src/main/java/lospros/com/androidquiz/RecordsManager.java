@@ -21,17 +21,7 @@ public class RecordsManager {
     private ArrayList<String> times; //Tiempos en String porque van en formato mm:ss
     private ArrayList<String> names;
 
-    /*public void createRecords(){
-        for(int i =0; i<5;i++) {
 
-            names.add("A"+i);
-            records.add((int) Math.round(Math.random()*10));
-
-        }
-    }
-
-
-*/
     public RecordsManager() {
         times = new ArrayList<>();
         records = new ArrayList<>();

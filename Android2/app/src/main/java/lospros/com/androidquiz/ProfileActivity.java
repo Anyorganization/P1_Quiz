@@ -76,8 +76,6 @@ public class ProfileActivity extends AppCompatActivity implements ConfirmDeleteD
 
         super.onCreate(savedInstanceState);
 
-        //hasCam = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-
         loadProfileData();
 
         if (hasCam){
@@ -90,13 +88,16 @@ public class ProfileActivity extends AppCompatActivity implements ConfirmDeleteD
     }
 
     private void loadProfileData(){
+        //Recuperar el nombre del perfil seleccionado.
         Bundle bundle = getIntent().getExtras();
         nameProfile = bundle.getString("nameProfile");
 
+
+        //Se instancia la base de datos y la tabla perfiles
         SQLiteManager conn = new SQLiteManager(getApplicationContext(), "bd_perfiles", null, 1);
         SQLiteDatabase db = conn.getWritableDatabase();
 
-
+        //El cursor ayuda a que encuentre el perfil dado el nombre.
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL + " WHERE " + Utilidades.CAMPO_NOMBRE + " = "+ "'"+nameProfile+"'", null);
         cursor.moveToFirst();
         int dirImage = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE));

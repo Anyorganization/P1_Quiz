@@ -25,7 +25,7 @@ public class ScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scores);
 
         String [] [] r =  new RecordsManager().getScores(getApplicationContext());
-
+        //Coloca cada record en su lugar.
         for(int i =0; i<r.length; i++){
             TextView tv = findViewById(getResources().getIdentifier("name_"+i, "id", getPackageName()));
             tv.setText(r[i][0]);

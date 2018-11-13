@@ -24,7 +24,6 @@ public class SettingsActivity extends Activity {
             super.setTheme(R.style.LightTheme);
         }
 
-
         super.onCreate(savedInstanceState);
 
         PrefFragment prefFragment = new PrefFragment();
