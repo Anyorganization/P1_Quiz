@@ -39,7 +39,7 @@ public class EndOfQuiz extends AppCompatActivity {
         score.setText(Integer.toString(value));
 
         TextView text_time = (TextView) findViewById(R.id.scoreText2);
-        text_time.setText(R.string.time+ " "+ Integer.toString(time)+"s");
+        text_time.setText(getString(R.string.time)+ " "+ Integer.toString(time)+"s");
 
         if(!namePlayer.equals(sharedUtilities.PREF_ANON)){
 

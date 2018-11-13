@@ -11,7 +11,6 @@
     <string name="app_name">Quiz</string>
     <string name="question">Question</string>
     <string name="anonymous">Anonymous</string>
-    <string name="profile_selected">You are now playing as</string>
 
     <!-- Create profile -->
     <string name="incorret_name">Not valid name</string>
@@ -25,7 +24,7 @@
     <string name="new_profile">New profile</string>
     <string name="last_game">Last game: </string>
     <string name="profile_updated">Profile updated</string>
-    <string name="profile_selected">You are now playing as </string>
+
 
 
     <!--End of Quiz -->

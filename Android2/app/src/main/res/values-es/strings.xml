@@ -154,7 +154,19 @@
     <string name="topic1_ans016_3">Moco</string>
     <string name="topic1_ans016_4">Agua</string>
     <string name="anonymous">Anónimo</string>
-    <string name="profile_selected">Ahora estás jugando como</string>
+    <string name="profile_selected">"Ahora estás jugando como "</string>
     <string name="anon_dialog_msg">Estás jugando como anónimo</string>
+    <string name="incorret_name">Nombre no válido</string>
+    <string name="no_photo">Por favor, haz una foto</string>
+    <string name="new_profile_selected">"Nuevo perfil seleccionado: "</string>
+    <string name="name_already_exists">Este nombre ya existe</string>
+    <string name="edit">Editar</string>
+    <string name="select">Seleccionar</string>
+    <string name="delete">Borrar</string>
+    <string name="name">Nombre</string>
+    <string name="new_profile">Nuevo perfil</string>
+    <string name="last_game">"Última partida: "</string>
+    <string name="profile_updated">Perfil actualizado</string>
+    <string name="time">Tiempo</string>
 
 </resources>

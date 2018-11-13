@@ -32,6 +32,9 @@ public class ScoresActivity extends AppCompatActivity {
             tv.setText(r[i][0]);
             tv = findViewById(getResources().getIdentifier("score_"+i, "id", getPackageName()));
             tv.setText(r[i][1]);
+
+            tv = findViewById(getResources().getIdentifier("time_"+i, "id", getPackageName()));
+            tv.setText(r[i][2]+"s");
         }
 
     }

@@ -106,7 +106,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(!(fechaLeida==0L)){
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
-            date_string = R.string.last_game+sdf.format(new Date(fechaLeida));
+            date_string = getString(R.string.last_game)+sdf.format(new Date(fechaLeida));
         }else{
             date_string = "";
         }
@@ -281,7 +281,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+nameProfile+"'", null);
-        Toast.makeText(getApplicationContext(), R.string.profile_updated, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.profile_updated), Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -297,7 +297,7 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(sharedUtilities.NAME_PLAYER,nameProfile);
         editor.commit();
-        Toast.makeText(getApplicationContext(),R.string.profile_selected+" "+ nameProfile, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),getString(R.string.new_profile_selected)+" "+ nameProfile, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

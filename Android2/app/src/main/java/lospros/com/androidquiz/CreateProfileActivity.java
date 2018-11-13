@@ -220,7 +220,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 editor.putString("NAME_PLAYER",campoNombre.getText().toString());
                 editor.commit();
 
-                Toast.makeText(CreateProfileActivity.this,R.string.profile_selected + " "+ campoNombre.getText().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateProfileActivity.this,getString(R.string.new_profile_selected) + " "+ campoNombre.getText().toString(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
