@@ -87,8 +87,6 @@ public class CreateProfileActivity extends AppCompatActivity {
             img_3 = (ImageView) findViewById(R.id.img_3);
             img_4 = (ImageView) findViewById(R.id.img_4);
 
-            hasCam=false; //TODO quitar esta linea joder.
-
 
             img_1.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -171,10 +169,10 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         if(campoNombre.getText().toString().equals("") || campoNombre.getText().toString().equals(sharedUtilities.PREF_ANON)){
 
-            Toast.makeText(CreateProfileActivity.this, "Not valid name", Toast.LENGTH_SHORT).show(); //TODO traducir string
+            Toast.makeText(CreateProfileActivity.this, R.string.incorret_name, Toast.LENGTH_SHORT).show();
 
         }else if(fotoPath.equals("")){
-            Toast.makeText(CreateProfileActivity.this, "Take a photo bastard", Toast.LENGTH_SHORT).show(); //TODO traducir string
+            Toast.makeText(CreateProfileActivity.this, R.string.no_photo, Toast.LENGTH_SHORT).show();
         }else{
             SQLiteManager conn = new SQLiteManager(this, "bd_perfiles", null, 1);
 
@@ -222,14 +220,14 @@ public class CreateProfileActivity extends AppCompatActivity {
                 editor.putString("NAME_PLAYER",campoNombre.getText().toString());
                 editor.commit();
 
-                Toast.makeText(CreateProfileActivity.this,"New profile selected", Toast.LENGTH_LONG).show(); //TODO poner String
+                Toast.makeText(CreateProfileActivity.this,R.string.profile_selected + " "+ campoNombre.getText().toString(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
 
             } else {
-                Toast.makeText(CreateProfileActivity.this, "Ya existe un perfil con ese nombre", Toast.LENGTH_SHORT).show(); //TODO traducir string
+                Toast.makeText(CreateProfileActivity.this, R.string.name_already_exists, Toast.LENGTH_LONG).show();
             }
         }
 

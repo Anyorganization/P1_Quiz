@@ -33,12 +33,17 @@ public class EndOfQuiz extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int value = bundle.getInt("score");
+        int time= bundle.getInt("time");
 
         TextView score = (TextView) findViewById(R.id.scoreText);
         score.setText(Integer.toString(value));
+
+        TextView text_time = (TextView) findViewById(R.id.scoreText2);
+        text_time.setText(R.string.time+ " "+ Integer.toString(time)+"s");
+
         if(!namePlayer.equals(sharedUtilities.PREF_ANON)){
 
-            new RecordsManager().updateRecords(namePlayer,value,getApplicationContext());
+            new RecordsManager().updateRecords(namePlayer,value,time,getApplicationContext());
         }
 
         Button playAgain = (Button) findViewById(R.id.restartButton);

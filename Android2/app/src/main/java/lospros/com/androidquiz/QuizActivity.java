@@ -181,7 +181,7 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
         label_question.setText(getString(R.string.question) + " " + (currentQuestion+1) + "/" + nQuestions);
 
         label_hits = (TextView) findViewById(R.id.label_hits);
-        label_hits.setText(hits + "/" + fails);
+        label_hits.setText(hits + " ✓ / " + fails+" ✘");
 
 
 
@@ -215,7 +215,6 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
                 buttons[i].setBackgroundResource(android.R.drawable.btn_default);
                 buttons[i].setText(getResources().getIdentifier(q.getAns()[i],"string", getPackageName()));
             }
-
         }
     }
 
@@ -380,6 +379,7 @@ public class QuizActivity extends AppCompatActivity implements PlayingAsAnonDial
 
         Intent intent = new Intent(this, EndOfQuiz.class); //Mostrar pantalla de final.
         intent.putExtra("score", finalScore);
+        intent.putExtra("time", secs);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

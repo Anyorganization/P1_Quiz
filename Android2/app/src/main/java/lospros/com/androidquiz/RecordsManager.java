@@ -22,6 +22,7 @@ import lospros.com.androidquiz.utilidades.Utilidades;
 
 public class RecordsManager {
     private ArrayList<Integer> records;
+    private ArrayList<Integer> times;
     private ArrayList<String> names;
 
     public void createRecords(){
@@ -29,26 +30,30 @@ public class RecordsManager {
 
             names.add("A"+i);
             records.add((int) Math.round(Math.random()*10));
+
         }
     }
 
 
 
     public RecordsManager() {
+        times = new ArrayList<>();
         records = new ArrayList<>();
         names = new ArrayList<>();
     }
 
-    public void updateRecords(String name, int score, Context ctx){
+    public void updateRecords(String name, int score,int time, Context ctx){
         readFile(ctx);
         records.add(score);
         names.add(name);
+        times.add(time);
 
         ordenar();
 
         if(records.size()>5){
             records.remove(records.size()-1);
             names.remove(names.size()-1);
+            records.remove((records.size()-1));
         }
 
         try {
@@ -80,7 +85,7 @@ public class RecordsManager {
         newValues.put(Utilidades.CAMPO_NPARTIDAS, (nPartidas + 1));
         db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+name+"'", null);
 
-        Toast.makeText(ctx, "nPartidas es "+ nPartidas, Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -97,6 +102,10 @@ public class RecordsManager {
                     names.set(j+1,names.get(j));
                     names.set(j, aux);
 
+                    int temp2 = times.get(j+1);
+                    times.set(j+1,times.get(j));
+                    times.set(j,temp2);
+
                 }
             }
 
@@ -105,10 +114,12 @@ public class RecordsManager {
 
     public String[][] getScores(Context ctx){//Devuelve pares nombre-puntuación
         readFile(ctx);
-        String p [][] = new String[records.size()] [2];
+        String p [][] = new String[records.size()] [3];
         for(int i =0; i<records.size();i++){
+
             p[i][0] = names.get(i);
             p[i][1] = Integer.toString(records.get(i));
+            p[i][2] = Integer.toString(times.get(i));
         }
         return p;
     }
@@ -125,6 +136,8 @@ public class RecordsManager {
 
             this.records= new ArrayList<>(RM.getRecords());
             this.names = new ArrayList<>(RM.getNames());
+            this.times = new ArrayList<>(RM.getTimes());
+
 
 
             Log.i("Records Leidos: ", data);
@@ -143,6 +156,13 @@ public class RecordsManager {
     public void setNames(ArrayList<String> names) {
         this.names = names;
     }
+    public void setTimes(ArrayList<Integer> times) { this.times = times; }
+
+    public ArrayList<Integer> getTimes() {
+        return times;
+    }
+
+
 
     public ArrayList<String> getNames() {
         return names;

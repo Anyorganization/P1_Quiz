@@ -12,12 +12,10 @@
     </string-array>
 
     <string-array name="topic_list_entries">
-        <item>@string/topic0</item>
         <item>@string/topic1</item>
         <item>@string/topic2</item>
     </string-array>
     <string-array name="topic_list_values">
-        <item>topic0</item>
         <item>topic1</item>
         <item>topic2</item>
     </string-array>

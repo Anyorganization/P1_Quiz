@@ -86,16 +86,16 @@
 
     <ImageView
         android:id="@+id/question_image"
-        android:layout_width="243dp"
-        android:layout_height="133dp"
+        android:layout_width="277dp"
+        android:layout_height="145dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
         android:src="@drawable/image_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/label_time" />
+        app:layout_constraintTop_toBottomOf="@+id/text_question" />
 
     <TextView
         android:id="@+id/label_hits"

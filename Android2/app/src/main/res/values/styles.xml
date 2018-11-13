@@ -42,11 +42,9 @@
         <item name="colorPrimary">@color/skyBlue</item>
         <item name="colorPrimaryDark">@color/transparent</item>
         <item name="android:textColor">@color/black</item>
-        <!-- <item name="android:background">@color/skyBlue</item> -->
         <item name="android:windowBackground">@drawable/light_bg</item>
         <item name="android:colorBackground">@color/skyBlue</item>
         <item name="colorAccent">@color/orange</item>
-
         <item name="android:fontFamily">@font/londontube</item>
         <item name="buttonStyle">@style/btn</item>
     </style>
@@ -55,14 +53,10 @@
         <item name="colorPrimary">@color/darkBlack</item>
         <item name="colorPrimaryDark">@color/transparent</item>
         <item name="android:textColor">@color/skyBlue</item>
-        <!-- <item name="android:background">@color/black</item> -->
         <item name="android:windowBackground">@drawable/dark_bg</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="colorAccent">@color/orange</item>
-        <item name="android:textAppearanceMedium">@color/skyBlue</item>
-        <item name="android:windowTitleStyle">@style/Sphinx</item>
         <item name="android:textColorPrimary">@color/skyBlue</item>
-
         <item name="android:fontFamily">@font/londontube</item>
         <item name="buttonStyle">@style/btn</item>
     </style>
@@ -75,7 +69,6 @@
         <item name="android:windowBackground">@color/gray</item>
         <item name="colorAccent">@color/orange</item>
         <item name="android:textAppearanceMedium">@color/black</item>
-        <!-- <item name="android:windowTitleStyle">@style/Sphinx</item>-->
         <item name="android:textColorPrimary">@color/black</item>
 
 

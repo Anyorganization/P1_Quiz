@@ -37,7 +37,7 @@ import java.text.SimpleDateFormat;
 import lospros.com.androidquiz.utilidades.Utilidades;
 import lospros.com.androidquiz.utilidades.sharedUtilities;
 
-//TODO poner en los botones de los layouts @Strings...
+
 public class ProfileActivity extends AppCompatActivity {
     EditText campoNombre;
     Button btn_edit, btn_select, btn_delete;
@@ -98,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PERFIL + " WHERE " + Utilidades.CAMPO_NOMBRE + " = "+ "'"+nameProfile+"'", null);
         cursor.moveToFirst();
-        int dirImage = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE));//TODO Hacer así en todas las lecturas (RecordsManager...etc).
+        int dirImage = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_DIRIMAGE));
         fotoPath=cursor.getString(cursor.getColumnIndex(Utilidades.CAMPO_FOTOPATH));
         nPartidas = cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_NPARTIDAS));
         record =  cursor.getInt(cursor.getColumnIndex(Utilidades.CAMPO_MAXPUNT));
@@ -106,7 +106,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(!(fechaLeida==0L)){
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
-            date_string = "Last game: "+sdf.format(new Date(fechaLeida));//TODO String
+            date_string = R.string.last_game+sdf.format(new Date(fechaLeida));
         }else{
             date_string = "";
         }
@@ -281,7 +281,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         db.update(Utilidades.TABLA_PERFIL, newValues, Utilidades.CAMPO_NOMBRE + "=" + "'"+nameProfile+"'", null);
-        Toast.makeText(getApplicationContext(), "profile updated", Toast.LENGTH_SHORT).show(); //TODO hacer String
+        Toast.makeText(getApplicationContext(), R.string.profile_updated, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ProfilesMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
